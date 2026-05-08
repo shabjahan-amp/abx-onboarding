@@ -239,6 +239,8 @@
   .data-table tr:hover td { background: var(--amp-light); }
   .data-table tbody tr:nth-child(even) td { background: var(--amp-card); }
   .data-table tbody tr:nth-child(even):hover td { background: var(--amp-light); }
+  .data-table td.segment-cell { background: #fff !important; vertical-align: middle; }
+  .data-table tr:hover td.segment-cell { background: var(--amp-light) !important; }
   .table-wrap { border: 1px solid var(--amp-border); border-radius: 10px; overflow: hidden; margin-bottom: 24px; overflow-x: auto; }
 
   /* ── COLLAPSIBLE ── */
@@ -757,7 +759,7 @@
       </thead>
       <tbody>
         <tr>
-			<td rowspan="6"><p><span class="badge badge-navy">Strategic</span>&nbsp;</p>
+			<td rowspan="6" class="segment-cell"><p><span class="badge badge-navy">Strategic</span>&nbsp;</p>
 		    <p>VP: Gamon Yaklich</p></td>
           <td>AMER East</td><td>Gamon Yaklich</td>
         </tr>
@@ -767,7 +769,7 @@
         <tr><td>AMER Bay Area</td><td>Gamon Yaklich</td></tr>
         <tr><td>AMER West</td><td>Gamon Yaklich</td></tr>
         <tr>
-          <td rowspan="4"><p><span class="badge badge-blue">AMER Majors</span>&nbsp;</p>
+          <td rowspan="4" class="segment-cell"><p><span class="badge badge-blue">AMER Majors</span>&nbsp;</p>
             <p>VP: Nicolette Conti&nbsp;</p>
           <p>(Rob Bow while she's on Mat Leave)</p></td>
           <td>West</td><td>TBH</td>
@@ -776,12 +778,12 @@
         <tr><td>South</td><td>Adam Yapkowitz</td></tr>
         <tr><td>East</td><td>Brian Wagner</td></tr>
         <tr>
-          <td rowspan="1"><p><span class="badge badge-orange">AMER Emerging</span>&nbsp;</p>
+          <td rowspan="1" class="segment-cell"><p><span class="badge badge-orange">AMER Emerging</span>&nbsp;</p>
           <p>VP: Rob Bow</p></td>
           <td>East</td><td>Shawn Hensley</td>
         </tr>
         <tr>
-          <td rowspan="4"><p><span class="badge badge-green">EMEA</span>&nbsp;</p>
+          <td rowspan="4" class="segment-cell"><p><span class="badge badge-green">EMEA</span>&nbsp;</p>
           <p>VP: Lee Edwards</p></td>
           <td>North &amp; DACH</td><td>Nick Ryan</td>
         </tr>
@@ -789,7 +791,7 @@
         <tr><td>Central &amp; MEA</td><td>Tansu Yegen</td></tr>
         <tr><td>France</td><td>Jeremy Grinbaum</td></tr>
         <tr>
-          <td rowspan="2"><p><span class="badge badge-green">APJ</span>&nbsp;</p>
+          <td rowspan="2" class="segment-cell"><p><span class="badge badge-green">APJ</span>&nbsp;</p>
 			  <p>VP: Matt Bennett</p></td>
           <td>ANZ</td><td>Matt Bennett</td>
 		  </tr>
