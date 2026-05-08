@@ -1,0 +1,1894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ABX Team Onboarding Guide — Amplitude</title>
+<style>
+  :root {
+    color-scheme: light;
+    --amp-blue: #0052F2;
+    --amp-navy: #001A4F;
+    --amp-lilac: #6980FF;
+    --amp-violet: #A373FF;
+    --amp-pink: #FF7D78;
+    --amp-light: #F2F5FF;
+    --amp-light2: #E8EDFF;
+    --amp-border: #D0D9F0;
+    --amp-text: #0A0A14;
+    --amp-muted: #5A6380;
+    --amp-bg: #FFFFFF;
+    --amp-card: #F8F9FF;
+    --amp-success: #1A9E5A;
+    --amp-warn: #E87830;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--amp-text);
+    background: var(--amp-bg);
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: var(--amp-navy);
+    color: #fff;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,.25);
+  }
+  .site-header .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo-mark {
+    width: 28px; height: 28px;
+    background: var(--amp-blue);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 16px; color: #fff; letter-spacing: -1px;
+  }
+  .logo-text { font-size: 15px; font-weight: 700; letter-spacing: -0.3px; }
+  .logo-sub { font-size: 11px; opacity: .7; margin-top: 1px; }
+  .header-actions { display: flex; align-items: center; gap: 10px; }
+  .search-wrap { position: relative; }
+  .search-wrap input {
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 13px;
+    padding: 7px 12px 7px 32px;
+    width: 220px;
+    outline: none;
+    transition: all .2s;
+  }
+  .search-wrap input::placeholder { color: rgba(255,255,255,.5); }
+  .search-wrap input:focus { background: rgba(255,255,255,.18); border-color: var(--amp-lilac); width: 260px; }
+  .search-icon {
+    position: absolute; left: 10px; top: 50%; transform: translateY(-50%);
+    opacity: .6; pointer-events: none;
+  }
+  #search-results-bar {
+    display: none;
+    background: var(--amp-light2);
+    border-bottom: 1px solid var(--amp-border);
+    padding: 8px 24px;
+    font-size: 13px;
+    color: var(--amp-muted);
+  }
+  #search-results-bar .clear-search {
+    color: var(--amp-blue);
+    cursor: pointer;
+    margin-left: 8px;
+    font-weight: 600;
+  }
+  .btn-print {
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.2);
+    color: #fff;
+    border-radius: 8px;
+    padding: 7px 14px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all .2s;
+    white-space: nowrap;
+  }
+  .btn-print:hover { background: rgba(255,255,255,.22); }
+
+  /* ── TABS ── */
+  .tabs-nav {
+    background: var(--amp-bg);
+    border-bottom: 2px solid var(--amp-border);
+    padding: 0 24px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    position: sticky;
+    top: 61px;
+    z-index: 90;
+  }
+  .tabs-nav::-webkit-scrollbar { height: 0; }
+  .tab-btn {
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    padding: 14px 18px 11px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--amp-muted);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all .2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: -2px;
+  }
+  .tab-btn:hover { color: var(--amp-blue); }
+  .tab-btn.active { color: var(--amp-blue); border-bottom-color: var(--amp-blue); font-weight: 600; }
+  .tab-icon { font-size: 15px; }
+
+  /* ── TAB CONTENT ── */
+  .tab-pane { display: none; padding: 28px 24px 60px; max-width: 1000px; margin: 0 auto; }
+  .tab-pane.active { display: block; }
+
+  /* ── SECTION HEADINGS ── */
+  .section-header {
+    background: linear-gradient(135deg, var(--amp-navy) 0%, var(--amp-blue) 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+  }
+  .section-header h1 { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
+  .section-header p { font-size: 13px; opacity: .8; margin-top: 4px; }
+
+  h2.subsection {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--amp-navy);
+    margin: 32px 0 14px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--amp-light2);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--amp-card);
+    border: 1px solid var(--amp-border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+  }
+  .card h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--amp-navy);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .card p, .card li { font-size: 13px; color: var(--amp-muted); line-height: 1.65; }
+  .card ul, .card ol { padding-left: 18px; }
+  .card li { margin-bottom: 4px; }
+
+  .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
+  .card-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 20px; }
+  @media (max-width: 680px) { .card-grid, .card-grid-3 { grid-template-columns: 1fr; } }
+
+  /* ── HIGHLIGHT BOX ── */
+  .highlight-box {
+    background: var(--amp-light);
+    border-left: 4px solid var(--amp-blue);
+    border-radius: 0 10px 10px 0;
+    padding: 14px 18px;
+    margin-bottom: 16px;
+  }
+  .highlight-box.warn { border-left-color: var(--amp-warn); background: #FFF6EF; }
+  .highlight-box.success { border-left-color: var(--amp-success); background: #EFF8F4; }
+  .highlight-box h4 { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+  .highlight-box p, .highlight-box li { font-size: 13px; line-height: 1.6; }
+  .highlight-box ul { padding-left: 16px; margin-top: 4px; }
+
+  /* ── STAT CHIPS ── */
+  .stat-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
+  .stat-chip {
+    background: var(--amp-blue);
+    color: #fff;
+    border-radius: 10px;
+    padding: 12px 20px;
+    text-align: center;
+    flex: 1;
+    min-width: 110px;
+  }
+  .stat-chip .num { font-size: 28px; font-weight: 900; letter-spacing: -1px; line-height: 1; }
+  .stat-chip .lbl { font-size: 11px; opacity: .85; margin-top: 3px; }
+  .stat-chip.navy { background: var(--amp-navy); }
+  .stat-chip.lilac { background: var(--amp-lilac); }
+  .stat-chip.violet { background: var(--amp-violet); }
+
+  /* ── TABLE ── */
+  .data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 20px; }
+  .data-table th {
+    background: var(--amp-navy);
+    color: #fff;
+    text-align: left;
+    padding: 10px 14px;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+  }
+  .data-table th:first-child { border-radius: 8px 0 0 0; }
+  .data-table th:last-child { border-radius: 0 8px 0 0; }
+  .data-table td { padding: 10px 14px; border-bottom: 1px solid var(--amp-border); vertical-align: top; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: var(--amp-light); }
+  .data-table tbody tr:nth-child(even) td { background: var(--amp-card); }
+  .data-table tbody tr:nth-child(even):hover td { background: var(--amp-light); }
+  .table-wrap { border: 1px solid var(--amp-border); border-radius: 10px; overflow: hidden; margin-bottom: 24px; overflow-x: auto; }
+
+  /* ── COLLAPSIBLE ── */
+  .collapsible-section { margin-bottom: 10px; border: 1px solid var(--amp-border); border-radius: 10px; overflow: hidden; }
+  .collapsible-header {
+    background: var(--amp-card);
+    padding: 14px 18px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--amp-navy);
+    transition: background .15s;
+    user-select: none;
+  }
+  .collapsible-header:hover { background: var(--amp-light2); }
+  .collapsible-header .chevron { transition: transform .25s; font-size: 12px; color: var(--amp-muted); }
+  .collapsible-header.open .chevron { transform: rotate(180deg); }
+  .collapsible-body { display: none; padding: 16px 18px; background: var(--amp-bg); border-top: 1px solid var(--amp-border); }
+  .collapsible-body.open { display: block; }
+
+  /* ── PERSON CARD ── */
+  .person-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: var(--amp-card);
+    border: 1px solid var(--amp-border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+  }
+  .person-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--amp-blue);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 17px;
+    flex-shrink: 0;
+  }
+  .person-avatar.navy { background: var(--amp-navy); }
+  .person-avatar.lilac { background: var(--amp-lilac); }
+  .person-avatar.violet { background: var(--amp-violet); }
+  .person-info h3 { font-size: 14px; font-weight: 700; color: var(--amp-navy); }
+  .person-info .role { font-size: 12px; color: var(--amp-blue); font-weight: 600; margin-bottom: 4px; }
+  .person-info .desc { font-size: 12px; color: var(--amp-muted); line-height: 1.5; }
+
+  /* ── BADGE ── */
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .3px;
+  }
+  .badge-blue { background: var(--amp-light2); color: var(--amp-blue); }
+  .badge-navy { background: var(--amp-navy); color: #fff; }
+  .badge-green { background: #E4F7ED; color: #1A9E5A; }
+  .badge-orange { background: #FFF0E5; color: var(--amp-warn); }
+
+  /* ── STEP FLOW ── */
+  .step-flow { display: flex; gap: 0; margin-bottom: 24px; overflow-x: auto; }
+  .step-item {
+    flex: 1;
+    min-width: 160px;
+    text-align: center;
+    position: relative;
+  }
+  .step-item:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    right: -14px; top: 22px;
+    font-size: 20px;
+    color: var(--amp-blue);
+    z-index: 1;
+  }
+  .step-num {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--amp-blue);
+    color: #fff;
+    font-weight: 900;
+    font-size: 18px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 8px;
+  }
+  .step-title { font-size: 13px; font-weight: 700; color: var(--amp-navy); margin-bottom: 4px; }
+  .step-desc { font-size: 12px; color: var(--amp-muted); line-height: 1.5; padding: 0 8px; }
+
+  /* ── RAMP TRACK ── */
+  .ramp-track { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 24px; }
+  @media (max-width: 680px) { .ramp-track { grid-template-columns: 1fr; } }
+  .ramp-phase {
+    border: 2px solid var(--amp-border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .ramp-phase-header {
+    padding: 14px 16px;
+    font-weight: 700;
+    font-size: 14px;
+    color: #fff;
+  }
+  .ramp-phase-header.p30 { background: var(--amp-blue); }
+  .ramp-phase-header.p60 { background: var(--amp-lilac); }
+  .ramp-phase-header.p90 { background: var(--amp-navy); }
+  .ramp-phase-header .sub { font-size: 11px; opacity: .85; font-weight: 400; margin-top: 2px; }
+  .ramp-phase ul { padding: 12px 16px 14px 28px; list-style: disc; }
+  .ramp-phase li { font-size: 12px; color: var(--amp-muted); margin-bottom: 5px; line-height: 1.5; }
+
+  /* ── LINK ── */
+  a { color: var(--amp-blue); text-decoration: none; font-weight: 500; }
+  a:hover { text-decoration: underline; }
+
+  /* ── TOOL CARD ── */
+  .tool-card {
+    background: var(--amp-card);
+    border: 1px solid var(--amp-border);
+    border-radius: 12px;
+    padding: 16px 18px;
+  }
+  .tool-card .tool-header {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
+  }
+  .tool-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    background: var(--amp-light2);
+  }
+  .tool-card h3 { font-size: 14px; font-weight: 700; color: var(--amp-navy); }
+  .tool-card .tool-role { font-size: 11px; color: var(--amp-blue); font-weight: 600; }
+  .tool-card p { font-size: 12px; color: var(--amp-muted); line-height: 1.6; }
+
+  /* ── SEARCH HIGHLIGHT ── */
+  .search-highlight { background: #FFF176; border-radius: 3px; }
+
+  /* ── KPI ROW ── */
+  .kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
+  @media (max-width: 680px) { .kpi-row { grid-template-columns: 1fr; } }
+  .kpi-card {
+    background: var(--amp-light);
+    border: 1px solid var(--amp-border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    text-align: center;
+  }
+  .kpi-card .kpi-icon { font-size: 22px; margin-bottom: 6px; }
+  .kpi-card .kpi-label { font-size: 12px; font-weight: 700; color: var(--amp-navy); }
+  .kpi-card .kpi-sub { font-size: 11px; color: var(--amp-muted); margin-top: 3px; line-height: 1.4; }
+
+  /* ── FAQ ── */
+  .faq-item { margin-bottom: 8px; }
+  .faq-q {
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--amp-navy);
+    cursor: pointer;
+    padding: 12px 16px;
+    background: var(--amp-card);
+    border: 1px solid var(--amp-border);
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    user-select: none;
+    transition: background .15s;
+  }
+  .faq-q:hover { background: var(--amp-light2); }
+  .faq-a {
+    display: none;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--amp-muted);
+    background: var(--amp-bg);
+    border: 1px solid var(--amp-border);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    line-height: 1.65;
+  }
+  .faq-a.open { display: block; }
+
+  /* ── RESOURCE LINKS ── */
+  .resource-list { list-style: none; padding: 0; }
+  .resource-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--amp-border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+  }
+  .resource-list li:last-child { border-bottom: none; }
+  .resource-icon { font-size: 18px; width: 28px; text-align: center; flex-shrink: 0; }
+  .resource-list .rl-title { font-weight: 600; color: var(--amp-navy); }
+  .resource-list .rl-desc { font-size: 12px; color: var(--amp-muted); margin-top: 1px; }
+
+  /* ── PRINT ── */
+  @media print {
+    .site-header, .tabs-nav, .search-wrap, .btn-print, #search-results-bar { display: none !important; }
+    .tab-pane { display: block !important; page-break-before: always; padding: 20px; }
+    .collapsible-body { display: block !important; }
+    .faq-a { display: block !important; }
+  }
+
+  /* ── DIVIDER ── */
+  .divider { border: none; border-top: 1px solid var(--amp-border); margin: 28px 0; }
+
+  /* contact region table mobile */
+  @media (max-width: 680px) { .data-table { font-size: 12px; } .data-table td, .data-table th { padding: 8px 10px; } }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="logo">
+    <div class="logo-mark">A</div>
+    <div>
+      <div class="logo-text">Amplitude ABX</div>
+      <div class="logo-sub">Enterprise Account Based Experience</div>
+    </div>
+  </div>
+  <div class="header-actions">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" placeholder="Search onboarding guide…" autocomplete="off">
+    </div>
+    <button class="btn-print" onclick="window.print()">🖨 Print</button>
+  </div>
+</header>
+<div id="search-results-bar">
+  <span id="search-summary"></span>
+  <span class="clear-search" onclick="clearSearch()">Clear search</span>
+</div>
+
+<!-- TABS NAV -->
+<nav class="tabs-nav" id="tabs-nav">
+  <button class="tab-btn active" data-tab="what-is-abx"><span class="tab-icon">🎯</span> What is ABX</button>
+  <button class="tab-btn" data-tab="the-team"><span class="tab-icon">👥</span> The Team</button>
+  <button class="tab-btn" data-tab="account-list"><span class="tab-icon">🏢</span> Account List</button>
+  <button class="tab-btn" data-tab="resources"><span class="tab-icon">🔗</span> Resources & Links</button>
+  <button class="tab-btn" data-tab="how-abx-works"><span class="tab-icon">⚙️</span> How ABX Works</button>
+  <button class="tab-btn" data-tab="tools-guide"><span class="tab-icon">🛠</span> Tools Guide</button>
+  <button class="tab-btn" data-tab="standards-faqs"><span class="tab-icon">📋</span> Standards & FAQs</button>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     TAB 1: WHAT IS ABX
+══════════════════════════════════════════ -->
+<div class="tab-pane active" id="tab-what-is-abx">
+  <div class="section-header">
+    <h1>🎯 What is ABX?</h1>
+    <p>Program overview, goals, strategy, and KPIs for Enterprise Account Based Experience at Amplitude</p>
+  </div>
+
+  <div class="highlight-box">
+    <h4>The one-liner</h4>
+    <p>ABX isn't a campaign channel. It's a go-to-market motion — how we orchestrate personalized, coordinated experiences for our most strategic enterprise accounts across marketing, sales, and customer success.</p>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-chip"><div class="num">118</div><div class="lbl">FY26 Target Accounts</div></div>
+    <div class="stat-chip navy"><div class="num">3</div><div class="lbl">Global Regions (AMER, EMEA, APJ)</div></div>
+    <div class="stat-chip lilac"><div class="num">Both</div><div class="lbl">Land & Expand Customers</div></div>
+    <div class="stat-chip violet"><div class="num">3</div><div class="lbl">Core Team Members</div></div>
+  </div>
+
+  <h2 class="subsection">🏗 What ABX Is Responsible For</h2>
+  <div class="card-grid-3">
+    <div class="card">
+      <h3>📋 Account Selection</h3>
+      <p>We identify and maintain the FY26 ABX target account list in Salesforce — 118 accounts globally, selected in partnership with sales LT for pipeline potential, strategic fit, and expansion opportunity. ABX targets both land and expand customers.</p>
+    </div>
+    <div class="card">
+      <h3>🚀 Coordinated Programs</h3>
+      <p>We build and run coordinated plays across email, ads, events, direct mail, gifting, and direct outreach — personalized by account, buying stage, and engagement signal.</p>
+    </div>
+    <div class="card">
+      <h3>🤝 Sales Alignment</h3>
+      <p>We partner with AEs, SDRs, and Field Marketing to ensure every account gets consistent, coordinated treatment from first touch through close and expansion. (Note: Field Marketing is under Marketing, not Sales.)</p>
+    </div>
+  </div>
+
+  <h2 class="subsection">🎯 Strategic Focus Areas</h2>
+  <div class="card">
+    <ul>
+      <li>Selecting and prioritizing the right enterprise accounts</li>
+      <li>Creating targeted programs that move deals and expand relationships</li>
+      <li>Aligning marketing and sales around shared account goals</li>
+      <li>Measuring impact on pipeline, engagement, and revenue</li>
+    </ul>
+  </div>
+
+  <h2 class="subsection">📈 KPIs & How We Measure Success</h2>
+  <div class="highlight-box">
+    <h4>ABX measures total pipeline across all channels</h4>
+    <p>Pipeline is driven by coordinated efforts across Marketing, SDRs, and Sales. Multiple channels work in parallel to influence and accelerate deals. Results come from combined impact — not a single team or tactic. ABX partners with Field Marketing and Growth Marketing to coordinate programs and align on account coverage.</p>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="kpi-icon">💰</div><div class="kpi-label">S2 $ Sourced & Influenced</div><div class="kpi-sub">Pipeline sourced and influenced across all channels for ABX accounts</div></div>
+    <div class="kpi-card"><div class="kpi-icon">📈</div><div class="kpi-label">S2 $ Expansion</div><div class="kpi-sub">Expansion ARR sourced from existing ABX customer accounts</div></div>
+    <div class="kpi-card"><div class="kpi-icon">🏃</div><div class="kpi-label">S2 → S7 Progression Rate</div><div class="kpi-sub">Deal acceleration — how fast ABX accounts move through pipeline stages</div></div>
+    <div class="kpi-card"><div class="kpi-icon">📬</div><div class="kpi-label">Account Engagement</div><div class="kpi-sub">Engagement score per account across all channels (email, ads, events, site)</div></div>
+    <div class="kpi-card"><div class="kpi-icon">💬</div><div class="kpi-label">Account Penetration</div><div class="kpi-sub">Depth and breadth of contacts engaged per account — buying group reach</div></div>
+    <div class="kpi-card"><div class="kpi-icon">🏆</div><div class="kpi-label">Closed Won $</div><div class="kpi-sub">Closed won ARR attributable to ABX-targeted accounts</div></div>
+  </div>
+
+  <h2 class="subsection">📊 Why ABX Works — Program History</h2>
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Year</th><th>Account Count</th><th>Focus Level</th><th>Results</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>FY24</strong></td>
+          <td>3,500 accounts</td>
+          <td><span class="badge badge-orange">Unfocused</span></td>
+          <td>Mktg Sourced: $6.9M &nbsp;|&nbsp; Influenced: $12.7M</td>
+        </tr>
+        <tr>
+          <td><strong>FY25</strong></td>
+          <td>142 accounts</td>
+          <td><span class="badge badge-blue">More focused</span></td>
+          <td>Mktg Sourced: $14.4M (+60% YoY) &nbsp;|&nbsp; All Sources: $41M (+95% YoY) &nbsp;|&nbsp; Influenced: $40M (+237% YoY)</td>
+        </tr>
+        <tr>
+          <td><strong>FY26</strong></td>
+          <td>118 accounts</td>
+          <td><span class="badge badge-navy">Focused</span></td>
+          <td>More budget per account · deeper personalization · closer alignment</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="subsection">🕰 ABX at Amplitude — Context</h2>
+  <div class="collapsible-section">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      Why ABX Matters at Amplitude <span class="chevron">▼</span>
+    </div>
+    <div class="collapsible-body">
+      <p>Enterprise ABX at Amplitude is built on the insight that enterprise deals don't happen to you — they're orchestrated. In the enterprise motion, a single deal often involves multiple stakeholders, long sales cycles, and high deal values. Spray-and-pray marketing doesn't work here. ABX replaces volume with precision: picking the right accounts, activating the right programs, and aligning every motion behind shared account goals.</p>
+      <p style="margin-top:8px;">The ABX function was designed to be the connective tissue between marketing (reach, content, programs), sales (AE relationships, deal strategy), SDRs (outbound coordination), and leadership (executive engagement).</p>
+    </div>
+  </div>
+
+  <div class="collapsible-section">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      How ABX Differs from Field Marketing and Demand Gen <span class="chevron">▼</span>
+    </div>
+    <div class="collapsible-body">
+      <div class="card-grid">
+        <div class="card">
+          <h3>ABX</h3>
+          <ul>
+            <li>Account-specific, named-account programs</li>
+            <li>AE-aligned and deal-stage aware</li>
+            <li>Buying-group focus (not just personas)</li>
+            <li>Tied to pipeline and revenue KPIs</li>
+            <li>Orchestrates across all channels for a specific account</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Field Marketing / Demand Gen</h3>
+          <ul>
+            <li>Regional or segment programs</li>
+            <li>Audience and persona-based</li>
+            <li>Volume-focused (leads, MQLs)</li>
+            <li>Tied to pipeline creation and event metrics</li>
+            <li>Broad reach, one-to-many</li>
+          </ul>
+        </div>
+      </div>
+      <p style="font-size:12px; color:var(--amp-muted);">Note: ABX partners <em>with</em> Field Marketing — we co-design programs, align targeting, and share account data. We're not competing channels.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB 2: THE TEAM
+══════════════════════════════════════════ -->
+<div class="tab-pane" id="tab-the-team">
+  <div class="section-header">
+    <h1>👥 The Team</h1>
+    <p>Core ABX team, org structure, cross-functional contacts, and who to go to for what</p>
+  </div>
+
+  <h2 class="subsection">🏢 Core ABX Team</h2>
+  <div class="person-card">
+    <div class="person-avatar">SJ</div>
+    <div class="person-info">
+      <h3>Shab Jahan</h3>
+      <div class="role">Director, ABX and Global Strategic Programs</div>
+      <div class="desc">ABX program strategy, account prioritization, cross-functional alignment, team leadership. Main POC for APJ. Your go-to for anything strategic or directional.</div>
+    </div>
+  </div>
+  <div class="person-card">
+    <div class="person-avatar lilac">KM</div>
+    <div class="person-info">
+      <h3>Kiersten McPoyle</h3>
+      <div class="role">Sr. ABX Specialist</div>
+      <div class="desc">Campaign execution and program coordination. Manages AMER East, AMER South, and EMEA accounts. Go-to for running plays, managing timelines, and coordinating cross-functional execution.</div>
+    </div>
+  </div>
+  <div class="person-card">
+    <div class="person-avatar violet">DW</div>
+    <div class="person-info">
+      <h3>Dee Ward</h3>
+      <div class="role">Sr. ABX Manager</div>
+      <div class="desc">Campaign execution and program coordination. Manages AMER West and AMER Central accounts. Go-to for account messaging, content development, and creative program assets.</div>
+    </div>
+  </div>
+
+  <h2 class="subsection">🗺 Who to Go to for What</h2>
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr><th>Topic</th><th>Who to Contact</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>ABX program strategy & account prioritization</td><td><strong>Shab Jahan</strong></td></tr>
+        <tr><td>Campaign execution & program coordination</td><td><strong>Kiersten McPoyle</strong> for guidance</td></tr>
+        <tr><td>Content, creative, or personalization requests</td><td><strong>Helsi Robino</strong></td></tr>
+        <tr><td>Sales alignment & AE partnership</td><td>Your paired AE / Sales lead</td></tr>
+        <tr><td>Sales Sync</td><td><strong>Shab Jahan</strong></td></tr>
+        <tr><td>Marketing Ops / Marketo</td><td><strong>Daniel Cuadra</strong></td></tr>
+        <tr><td>RevOps / Salesforce</td><td><strong>Omar Hani</strong></td></tr>
+        <tr><td>Budget & procurement</td><td><strong>Brian Roberts</strong></td></tr>
+        <tr><td>Tools access & onboarding</td><td>Submit via <strong>Lumos</strong> in Slack</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="subsection">📍 SDR Contacts by Region</h2>
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr><th>Region</th><th>SDR Contact</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="badge badge-blue">AMER West</span></td><td><strong>Lauren Hargarten</strong></td></tr>
+        <tr><td><span class="badge badge-blue">AMER Central / East</span></td><td><strong>Halle Morris</strong></td></tr>
+        <tr><td><span class="badge badge-navy">EMEA & APJ</span></td><td><strong>Mathieu Di Franco</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="subsection">🌍 Field Marketing Contacts by Region</h2>
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr><th>Region</th><th>Field Marketing Contact</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="badge badge-blue">AMER West</span></td><td><strong>Chelsea Colby</strong></td></tr>
+        <tr><td><span class="badge badge-blue">AMER Central / South</span></td><td><strong>Sarah Stolusky</strong></td></tr>
+        <tr><td><span class="badge badge-blue">AMER East</span></td><td><strong>Ananya Tomar</strong></td></tr>
+        <tr><td><span class="badge badge-navy">EMEA UKI / North</span></td><td><strong>Angela van Bragt</strong></td></tr>
+        <tr><td><span class="badge badge-navy">EMEA South</span></td><td><strong>Sarah Saliba</strong></td></tr>
+        <tr><td><span class="badge badge-navy">EMEA Central</span></td><td><strong>Lisa Sinare</strong></td></tr>
+        <tr><td><span class="badge badge-green">APJ ANZ & RoAsia</span></td><td><strong>Alicia Chua</strong></td></tr>
+        <tr><td><span class="badge badge-green">APJ Japan</span></td><td><strong>Satoko Shimada</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="subsection">🔄 Cross-Functional Partners</h2>
+  <div class="card-grid">
+    <div class="card">
+      <h3>👩‍💼 Sales / Enterprise AEs</h3>
+      <p>ABX runs in lockstep with your paired AEs. Weekly sync, account brief delivery, and play activation all happen in partnership with AEs. They are your primary signal source and primary beneficiary.</p>
+    </div>
+    <div class="card">
+      <h3>📣 Field Marketing</h3>
+      <p>Co-designs events and regional programs targeting ABX accounts. We provide account targeting lists; Field Marketing drives logistics. Key partners listed in the regional contacts table above. Note: Field Marketing is engaged for broader Field-hosted events — anything ABX-only is managed directly by the ABX team.</p>
+    </div>
+    <div class="card">
+      <h3>📊 RevOps / Marketing Ops</h3>
+      <p>Omar Hani (RevOps) owns Salesforce data hygiene and reporting pipelines. Daniel Cuadra (Marketing Ops) owns Marketo infrastructure and attribution. Contact them for any data, tooling, or ops questions.</p>
+    </div>
+    <div class="card">
+      <h3>💬 SDR Team</h3>
+      <p>Executes outbound outreach for ABX target accounts, coordinated via a monthly ABX ↔ SDR sync plus regular Slack updates. ABX provides messaging frameworks and account context; SDRs activate outreach.</p>
+    </div>
+    <div class="card">
+      <h3>✍️ Product Marketing</h3>
+      <p>Source for positioning, messaging frameworks, product narratives, and competitive intel. Partner when building account-specific messaging or responding to technical objections.</p>
+    </div>
+    <div class="card">
+      <h3>❤️ Customer Marketing</h3>
+      <p>Owns expansion and advocacy programs for existing customers. Partner when ABX accounts are current customers, especially for expansion plays or renewal support.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB 3: ACCOUNT LIST
+══════════════════════════════════════════ -->
+<div class="tab-pane" id="tab-account-list">
+  <div class="section-header">
+    <h1>🏢 Account List</h1>
+    <p>FY26 ABX account coverage — 118 accounts globally across AMER, EMEA, and APJ</p>
+  </div>
+
+  <div class="highlight-box">
+    <h4>📍 Source of Truth</h4>
+    <p>The canonical FY26 ABX account list lives in <strong>Salesforce</strong>. Filter by <strong>Account Classification includes "FY26 ABX"</strong> to see all active target accounts. Always use Salesforce as the live source — this page reflects the current structure, not the full live list. Direct link: <a href="https://amplitude.lightning.force.com/lightning/r/Report/00OVH000009Q8Kv2AK/view" target="_blank">ABX Account Report</a></p>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-chip"><div class="num">118</div><div class="lbl">Total FY26 ABX Accounts</div></div>
+    <div class="stat-chip navy"><div class="num">57</div><div class="lbl">Strategic (AMER)</div></div>
+    <div class="stat-chip lilac"><div class="num">34</div><div class="lbl">AMER Majors + Emerging</div></div>
+    <div class="stat-chip violet"><div class="num">27</div><div class="lbl">EMEA + APJ</div></div>
+  </div>
+
+  <div class="highlight-box success">
+    <h4>🤝 One Program. One Goal. Marketing + Sales Together.</h4>
+    <p>ABX is a team sport. All 118 accounts are on equal footing — <strong>no tiers, no hierarchy</strong>. Every account receives the same coordinated ABX activities. Results come from the combined impact of Marketing, SDRs, and Sales working in parallel toward shared pipeline and revenue goals.</p>
+  </div>
+
+  <h2 class="subsection">🗂 Account Breakdown by Segment & Geo</h2>
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr><th>Segment</th><th>Count</th><th>Region</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge badge-navy">Strategic</span></td>
+          <td><strong>57</strong></td>
+          <td>AMER</td>
+          <td>Largest enterprise accounts — highest ARR potential, full ABX orchestration</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-blue">AMER Majors</span></td>
+          <td><strong>32</strong></td>
+          <td>AMER</td>
+          <td>Major enterprise accounts with strong growth and expansion potential</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-orange">AMER Emerging</span></td>
+          <td><strong>2</strong></td>
+          <td>AMER</td>
+          <td>Early-stage ABX targets with high long-term potential</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-green">EMEA</span></td>
+          <td><strong>19</strong></td>
+          <td>Europe, Middle East & Africa</td>
+          <td>Enterprise accounts across UK, DACH, France, Central & MEA</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-green">APJ</span></td>
+          <td><strong>8</strong></td>
+          <td>Asia Pacific & Japan</td>
+          <td>Enterprise accounts across ANZ and RoAsia</td>
+        </tr>
+        <tr style="font-weight:700; background:var(--amp-light);">
+          <td><strong>TOTAL</strong></td>
+          <td><strong>118</strong></td>
+          <td>Global</td>
+          <td>All accounts receive the same ABX activities and programs</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="subsection">🏢 FY26 Account Lists by Segment</h2>
+
+  <div class="collapsible-section">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      Strategic (57) — AMER <span class="chevron">▼</span>
+    </div>
+    <div class="collapsible-body">
+      <div style="columns:3; column-gap:24px; font-size:13px; color:var(--amp-muted); line-height:2;">
+        <div>American Express</div><div>Mastercard</div><div>JPMorgan Chase &amp; Co.</div><div>Goldman Sachs</div><div>Capital One</div><div>Citibank</div><div>Morgan Stanley</div><div>PNC Bank</div><div>Verizon</div><div>National Hockey League</div><div>DraftKings</div><div>Fidelity</div><div>HubSpot, Inc.</div><div>IBM</div><div>Major League Baseball</div><div>National Football League</div><div>AT&amp;T</div><div>Cox Enterprises</div><div>Equifax</div><div>Inspire Brands</div><div>Lowe's Companies, Inc.</div><div>Ford Motor Company</div><div>General Motors</div><div>McDonald's</div><div>Oracle</div><div>Shopify</div><div>UnitedHealth Group</div><div>Walgreens</div><div>Yum! Brands</div><div>Amazon.com</div><div>Instacart</div><div>Starbucks</div><div>T-Mobile</div><div>Yelp</div><div>Microsoft</div><div>NVIDIA</div><div>ServiceNow</div><div>Airbnb, Inc.</div><div>Cisco Systems</div><div>Coinbase</div><div>Intuit</div><div>PayPal</div><div>Salesforce.com</div><div>The Walt Disney Company</div><div>Uber</div><div>Walmart</div><div>Wells Fargo</div><div>Apple</div><div>DoorDash</div><div>Dropbox</div><div>eBay</div><div>Electronic Arts</div><div>Square</div><div>Visa</div><div>Warner Bros. Discovery</div><div>Workday</div><div>Airbnb, Inc.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="collapsible-section">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      AMER Majors (32) <span class="chevron">▼</span>
+    </div>
+    <div class="collapsible-body">
+      <div style="columns:3; column-gap:24px; font-size:13px; color:var(--amp-muted); line-height:2;">
+        <div>Discord</div><div>Experian</div><div>HP Inc.</div><div>Snapchat, Inc.</div><div>Nike</div><div>Paramount Global</div><div>Stripe</div><div>VF Corporation</div><div>Dominos</div><div>Enterprise Rent-A-Car</div><div>Lululemon athletica</div><div>Progressive Insurance</div><div>The Wendy's Company</div><div>Ulta</div><div>United Airlines</div><div>Bank of America</div><div>Charles Schwab</div><div>Epic Games</div><div>GoTo Foods</div><div>Grupo Salinas</div><div>Itaú Unibanco</div><div>Royal Caribbean</div><div>Southwest Airlines</div><div>UPS</div><div>ADP</div><div>Booking Holdings (The Priceline Group)</div><div>Compass</div><div>CoStar Group</div><div>CVS</div><div>Hilton Worldwide</div><div>Hearst Communications, Inc.</div><div>Take-Two Interactive Software</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="collapsible-section">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      AMER Emerging (2) <span class="chevron">▼</span>
+    </div>
+    <div class="collapsible-body">
+      <div style="font-size:13px; color:var(--amp-muted); line-height:2;">
+        <div>Barstool Sports</div><div>Bombas</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="collapsible-section">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      EMEA (19) <span class="chevron">▼</span>
+    </div>
+    <div class="collapsible-body">
+      <div style="columns:3; column-gap:24px; font-size:13px; color:var(--amp-muted); line-height:2;">
+        <div>Barclays</div><div>J Sainsbury plc</div><div>JPMC - Project Dynamo</div><div>Lloyds Banking Group PLC</div><div>Revolut</div><div>DAZN Group</div><div>Flutter Entertainment Plc</div><div>Sky UK</div><div>HSBC Holdings plc.</div><div>Inter IKEA Group</div><div>Spotify</div><div>Koninklijke Ahold Delhaize N.V.</div><div>Just Eat Takeaway</div><div>Zalando SE</div><div>N26</div><div>Adidas</div><div>InDrive</div><div>Noon</div><div>LVMH</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="collapsible-section">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      APJ (8) <span class="chevron">▼</span>
+    </div>
+    <div class="collapsible-body">
+      <div style="columns:2; column-gap:24px; font-size:13px; color:var(--amp-muted); line-height:2;">
+        <div>Telstra ANZ</div><div>Wesfarmers</div><div>Woolworths Group Limited</div><div>Westpac Group</div><div>Reliance Industries Limited</div><div>Tata Group</div><div>Aditya Birla Group</div><div>ZEE Entertainment</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="subsection">🔍 How Accounts Are Selected</h2>
+  <div class="highlight-box">
+    <h4>ABX strategy is aligned to "moonshot" opportunities</h4>
+    <p>The goal is to focus efforts on high-impact, high-potential accounts where coordinated action can influence pipeline and revenue. FY26 reduced the account list from 142 to 118 to maximize impact through deeper personalization and tighter execution.</p>
+  </div>
+  <div class="card-grid-3">
+    <div class="card">
+      <h3>📈 Prospect Score</h3>
+      <p>High or Very High Prospect Score based on firmographic fit, intent signals, and engagement history.</p>
+    </div>
+    <div class="card">
+      <h3>🎯 Buying Stage</h3>
+      <p>Decision or Purchase buying stage in 6sense — accounts actively in-market for analytics or adjacent products.</p>
+    </div>
+    <div class="card">
+      <h3>💰 ARR Potential</h3>
+      <p>$1M+ ARR potential — either greenfield enterprise targets or existing customers with significant expansion opportunity.</p>
+    </div>
+    <div class="card">
+      <h3>🤝 Sales Commitment</h3>
+      <p>FLM, VP, and ABX approval required. AE commits to keeping the account in the program for the full year.</p>
+    </div>
+    <div class="card">
+      <h3>📊 Recent Engagement</h3>
+      <p>Recent sales or marketing interaction confirming account is active and relationship is being worked.</p>
+    </div>
+    <div class="card">
+      <h3>🏆 Strong Account Fit</h3>
+      <p>Strategic alignment with Amplitude's ICP — fintech, media, e-commerce, SaaS, gaming, and enterprise tech.</p>
+    </div>
+  </div>
+
+  <h2 class="subsection">📋 How to Look Up Your Accounts</h2>
+  <div class="collapsible-section">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      Step-by-step: Finding ABX accounts in Salesforce <span class="chevron">▼</span>
+    </div>
+    <div class="collapsible-body">
+      <ol style="padding-left:20px; font-size:13px; color:var(--amp-muted); line-height:2;">
+        <li>Log in to Salesforce at <a href="https://amplitude.lightning.force.com/lightning/r/Report/00OVH000009Q8Kv2AK/view" target="_blank">amplitude.lightning.force.com</a></li>
+        <li>Navigate to the <strong>Accounts</strong> object</li>
+        <li>Apply the filter: <strong>Account Classification includes "FY26 ABX"</strong></li>
+        <li>Add your region or AE name as an additional filter if needed</li>
+        <li>Export or save the view for regular reference</li>
+        <li>For the official ABX account report, ask <strong>Shab</strong> for the saved report link</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="collapsible-section">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      What to know about each account before engaging <span class="chevron">▼</span>
+    </div>
+    <div class="collapsible-body">
+      <ul style="padding-left:20px; font-size:13px; color:var(--amp-muted); line-height:2;">
+        <li><strong>Company overview</strong> — industry, size, Amplitude product usage</li>
+        <li><strong>Current deal status</strong> — open opps, stage, close date, ACV</li>
+        <li><strong>Key contacts</strong> — economic buyer, champion, influencers, blockers</li>
+        <li><strong>Engagement history</strong> — past events attended, emails opened, content downloaded</li>
+        <li><strong>6sense intent signals</strong> — current buying stage and in-market keywords</li>
+        <li><strong>AE relationship status</strong> — existing relationship strength, last meeting date</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB 4: RESOURCES & LINKS
+══════════════════════════════════════════ -->
+<div class="tab-pane" id="tab-resources">
+  <div class="section-header">
+    <h1>🔗 Resources & Links</h1>
+    <p>Key trackers, asset library, documents, and shared resources for the ABX team</p>
+  </div>
+
+  <h2 class="subsection">📊 Core Trackers & Working Docs</h2>
+  <ul class="resource-list">
+    <li>
+      <span class="resource-icon">📋</span>
+      <div>
+        <div class="rl-title"><a href="https://amplitude.lightning.force.com/lightning/r/Report/00OVH000009Q8Kv2AK/view" target="_blank">FY26 ABX Account List — Salesforce</a></div>
+        <div class="rl-desc">Live source of truth. Filter by Account Classification includes "FY26 ABX". 118 accounts.</div>
+      </div>
+    </li>
+    <li>
+      <span class="resource-icon">📊</span>
+      <div>
+        <div class="rl-title">ABX Performance Dashboards — Tableau</div>
+        <div class="rl-desc">Account engagement, pipeline influence, and program performance.</div>
+        <ul style="padding-left:16px; margin-top:6px; font-size:12px; color:var(--amp-muted);">
+          <li><a href="https://10ay.online.tableau.com/#/site/amplitudeteamspace/views/NamedAccount/ExecutiveSummary" target="_blank">Named Account Dashboard</a></li>
+          <li><a href="https://10ay.online.tableau.com/#/site/amplitudeteamspace/views/PipelineMetrics_17365313753560/ExecSummary?%3Aiid=1" target="_blank">Pipeline Metrics</a></li>
+          <li><a href="https://10ay.online.tableau.com/#/site/amplitudeteamspace/views/CampaignMetrics_17365746095160/TopCampaignsbyFunnelMetric?:iid=1" target="_blank">Campaign Metrics</a></li>
+          <li><a href="https://10ay.online.tableau.com/#/site/amplitudeteamspace/views/ROIDashboard/CampaignSpendSummary?:iid=1" target="_blank">ROI Dashboard</a></li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <span class="resource-icon">💰</span>
+      <div>
+        <div class="rl-title">Budget Tracker</div>
+        <div class="rl-desc">Track ABX program spend against budget.</div>
+        <ul style="padding-left:16px; margin-top:6px; font-size:12px; color:var(--amp-muted);">
+          <li><a href="https://eu1.uptempo.io/budgets/127766/items?view=default" target="_blank">Allocadia (Uptempo)</a></li>
+          <li><a href="https://docs.google.com/spreadsheets/d/1laXR7aYUIu-JD8UIcM85kXRb_MGN0n2qNfuTqDqoWE0/edit?gid=397321531#gid=397321531" target="_blank">Budget Tracker — Google Sheets</a></li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <span class="resource-icon">📝</span>
+      <div>
+        <div class="rl-title"><a href="https://docs.google.com/document/d/12MOOSeISPaRq0NnYIzee0j_Xd_oabrudfmzQVeje4HU/edit?tab=t.0" target="_blank">Account Notes</a></div>
+        <div class="rl-desc">Running notes and context for ABX target accounts.</div>
+      </div>
+    </li>
+  </ul>
+
+  <h2 class="subsection">🎨 Asset Library & Creative</h2>
+  <ul class="resource-list">
+    <li>
+      <span class="resource-icon">🖼</span>
+      <div>
+        <div class="rl-title"><a href="https://brand.amplitude.com" target="_blank">Brand Guidelines — brand.amplitude.com</a></div>
+        <div class="rl-desc">Official Amplitude brand guidelines: colors, typography, logo usage, voice & tone.</div>
+      </div>
+    </li>
+    <li>
+      <span class="resource-icon">🎨</span>
+      <div>
+        <div class="rl-title"><a href="https://www.canva.com/brand/brand-templates" target="_blank">Canva Templates</a></div>
+        <div class="rl-desc">Amplitude-branded Canva templates for ABX assets and presentations.</div>
+      </div>
+    </li>
+    <li>
+      <span class="resource-icon">📊</span>
+      <div>
+        <div class="rl-title"><a href="https://docs.google.com/presentation/d/1bv7J1Bmd-fWLlVyPhnEX_YCiKDBZaZSqJrHnBKt_St8/edit?slide=id.g36bac083637_0_1" target="_blank">Presentation Deck</a></div>
+        <div class="rl-desc">Master Amplitude presentation deck template.</div>
+      </div>
+    </li>
+    <li>
+      <span class="resource-icon">📈</span>
+      <div>
+        <div class="rl-title"><a href="https://docs.google.com/presentation/d/126nuHZV9Y74Uu8ls2tWWVUnyg-DZfIZwgdgcXrrhYw8/edit?slide=id.g3833258fbc7_2_370" target="_blank">Pitch Deck 1</a></div>
+        <div class="rl-desc">Core Amplitude pitch deck for enterprise accounts.</div>
+      </div>
+    </li>
+    <li>
+      <span class="resource-icon">📈</span>
+      <div>
+        <div class="rl-title"><a href="https://docs.google.com/presentation/d/1l1aoxEZf96xzrJ3gi9X1RrRxIFyl85We9t2ejzT0mbw/edit?slide=id.g335cc1e4c8a_0_2853" target="_blank">Pitch Deck 2</a></div>
+        <div class="rl-desc">Secondary pitch deck variant for enterprise accounts.</div>
+      </div>
+    </li>
+    <li>
+      <span class="resource-icon">🤖</span>
+      <div>
+        <div class="rl-title"><a href="https://docs.google.com/presentation/d/1G6KxuTUKn4U_BrBzkPwLQe10R1ck1_bU2IeqdaITTUw/edit?slide=id.g380c52c523e_2_394" target="_blank">AI One Sheeter</a></div>
+        <div class="rl-desc">Amplitude AI capabilities one-pager for account conversations.</div>
+      </div>
+    </li>
+    <li>
+      <span class="resource-icon">📄</span>
+      <div>
+        <div class="rl-title"><a href="https://docs.google.com/presentation/d/1O8U0qh0njv2uV-HIkZMjUEBc2Pi4aSQ5HD44z1AM-WY/edit?slide=id.g380c52c523e_2_394" target="_blank">One Sheet Template</a></div>
+        <div class="rl-desc">Standard one-sheet template for account-specific leave-behinds.</div>
+      </div>
+    </li>
+  </ul>
+
+  <h2 class="subsection">📚 Learning & Enablement</h2>
+  <ul class="resource-list">
+    <li>
+      <span class="resource-icon">🚀</span>
+      <div>
+        <div class="rl-title"><a href="https://docs.google.com/presentation/d/1_2HjaXaPQ8Bm9mk-LWsIeGcKa2O7Ond2HYMfNnesHfQ/edit?slide=id.g335cc1e4c8a_0_2901" target="_blank">FY26 ABX Enablement Deck</a></div>
+        <div class="rl-desc">Full program overview, account lists, roles & responsibilities, tools guide, and Influ2 tagging instructions. Start here.</div>
+      </div>
+    </li>
+    <li>
+      <span class="resource-icon">🎓</span>
+      <div>
+        <div class="rl-title"><a href="https://academy.amplitude.com" target="_blank">Amplitude Academy</a></div>
+        <div class="rl-desc">Complete Amplitude product onboarding and certifications. Required in your first 30 days.</div>
+      </div>
+    </li>
+    <li>
+      <span class="resource-icon">🔍</span>
+      <div>
+        <div class="rl-title"><a href="https://app.glean.com" target="_blank">Glean — Internal Knowledge Search</a></div>
+        <div class="rl-desc">Find docs, Slack threads, past decks, and internal company information in one place.</div>
+      </div>
+    </li>
+    <li>
+      <span class="resource-icon">🤖</span>
+      <div>
+        <div class="rl-title"><a href="https://claude.ai" target="_blank">Claude (Anthropic) — AI Assistant</a></div>
+        <div class="rl-desc">Your AI assistant for research, writing, analysis, and building. Use for account briefs, messaging drafts, and data analysis.</div>
+      </div>
+    </li>
+    <li>
+      <span class="resource-icon">📊</span>
+      <div>
+        <div class="rl-title">Amplitude Analytics — Product Usage Data</div>
+        <div class="rl-desc">Product engagement signals for ABX target accounts. Used to identify expansion opportunity and usage gaps.</div>
+      </div>
+    </li>
+  </ul>
+
+  <h2 class="subsection">🔑 Getting Access to Tools</h2>
+  <div class="highlight-box warn">
+    <h4>⚠️ Tools Access Process</h4>
+    <p>All tools access requests must be submitted via <strong>Lumos</strong> in Slack. Do not ask your manager or IT directly — use the Lumos workflow to ensure proper provisioning and tracking.</p>
+  </div>
+  <div class="card">
+    <h3>Priority tools to request on Day 1</h3>
+    <ul>
+      <li>Salesforce (CRM access)</li>
+      <li>Asana</li>
+      <li>Marketo (Marketing automation — via Marketing Ops)</li>
+      <li>6sense (Intent data platform)</li>
+      <li>Glean (Internal search)</li>
+      <li>Claude / Anthropic (AI tools)</li>
+      <li>Amplitude Analytics (Product platform)</li>
+      <li>Tableau (Dashboards)</li>
+      <li>Influ2 (ABX display advertising)</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB 5: HOW ABX WORKS
+══════════════════════════════════════════ -->
+<div class="tab-pane" id="tab-how-abx-works">
+  <div class="section-header">
+    <h1>⚙️ How ABX Works</h1>
+    <p>Processes, workflows, proven plays, meeting rhythms, and how a program comes to life</p>
+  </div>
+
+  <h2 class="subsection">🔄 How a Play Comes to Life</h2>
+  <div class="step-flow">
+    <div class="step-item">
+      <div class="step-num">01</div>
+      <div class="step-title">Account Signal</div>
+      <div class="step-desc">A trigger fires: 6sense intent, AE request, deal stage change, or product usage signal.</div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">02</div>
+      <div class="step-title">Play Brief</div>
+      <div class="step-desc">ABX builds a brief: target accounts, messaging angle, channels, timeline, and success metrics.</div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">03</div>
+      <div class="step-title">Activation</div>
+      <div class="step-desc">Cross-functional execution: email, ads via Influ2, events, sales outreach, or exec engagement.</div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">04</div>
+      <div class="step-title">Measurement</div>
+      <div class="step-desc">Track account engagement, pipeline influence, and deal progression. Report to AEs and leadership.</div>
+    </div>
+  </div>
+
+  <h2 class="subsection">📅 Meeting Rhythm & Recurring Cadences</h2>
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr><th>Meeting</th><th>Cadence</th><th>Who</th><th>Purpose</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>ABX Team Standup</strong></td>
+          <td><span class="badge badge-blue">Weekly</span></td>
+          <td>ABX team</td>
+          <td>Program updates, blockers, priorities</td>
+        </tr>
+        <tr>
+          <td><strong>ABX ↔ Sales Sync</strong></td>
+          <td><span class="badge badge-blue">Weekly</span></td>
+          <td>ABX + AE leads</td>
+          <td>Account alignment, play activation</td>
+        </tr>
+        <tr>
+          <td><strong>Marketing All-Hands</strong></td>
+          <td><span class="badge badge-blue">Biweekly</span></td>
+          <td>All of Marketing</td>
+          <td>Company updates, cross-team alignment</td>
+        </tr>
+        <tr>
+          <td><strong>ABX Planning Review</strong></td>
+          <td><span class="badge badge-orange">Monthly</span></td>
+          <td>ABX + RevOps</td>
+          <td>Pipeline, account health, program performance</td>
+        </tr>
+        <tr>
+          <td><strong>ABX ↔ SDR Sync</strong></td>
+          <td><span class="badge badge-orange">Monthly</span></td>
+          <td>ABX + SDR team</td>
+          <td>Outreach coordination, sequencing + regular Slack updates</td>
+        </tr>
+        <tr>
+          <td><strong>Quarterly Business Review (QBR)</strong></td>
+          <td><span class="badge badge-navy">Quarterly</span></td>
+          <td>ABX + Sales leadership</td>
+          <td>OKR progress, account performance, next quarter priorities</td>
+        </tr>
+        <tr>
+          <td><strong>GTM Leadership Sync</strong></td>
+          <td><span class="badge badge-orange">Monthly</span></td>
+          <td>Marketing + Sales leadership</td>
+          <td>Strategic alignment, exec updates</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="subsection">🤝 How ABX Partners with Sales</h2>
+  <div class="highlight-box">
+    <h4>ABX only works when marketing and sales move together</h4>
+    <p>Your role sits at the intersection of marketing and sales. Here's how that works in practice:</p>
+  </div>
+  <div class="card-grid">
+    <div class="card">
+      <h3>📅 Weekly AE Sync</h3>
+      <p>Align on account priorities, deal status, and upcoming plays. This is your primary touchpoint with your paired AEs — come prepared with account signals, program updates, and questions.</p>
+    </div>
+    <div class="card">
+      <h3>📋 Account Briefs</h3>
+      <p>You'll build and deliver pre-meeting intelligence for key accounts — company context, stakeholder mapping, intent signals, and personalized talking points for AEs before important meetings.</p>
+    </div>
+    <div class="card">
+      <h3>🚀 Play Activation</h3>
+      <p>You trigger programs based on account signals, AE requests, and pipeline stage. When a deal moves or an intent spike fires, ABX is the team that turns that signal into a coordinated play.</p>
+    </div>
+    <div class="card">
+      <h3>📊 Reporting</h3>
+      <p>You share account engagement data back to AEs and leadership weekly — what's working, which accounts are engaging, and where we need to push harder.</p>
+    </div>
+  </div>
+
+  <div class="highlight-box success">
+    <h4>💬 AE Slack Channels — Your Primary Communication Hub</h4>
+    <p>Every AE has a dedicated ABX Slack channel named <strong>#abx-[firstname]-[lastname]</strong> (e.g. <em>#abx-jane-smith</em>). All account-level communications, play updates, and coordination with that AE should happen in their channel — this keeps everyone on the same page and creates a searchable record of account activity.</p>
+  </div>
+
+  <h2 class="subsection">💬 Day-to-Day Communication Norms</h2>
+  <div class="card-grid-3">
+    <div class="card">
+      <h3>💬 Slack</h3>
+      <p>Primary async channel for quick questions, FYIs, and program updates. Submit all tool access requests via <strong>Lumos</strong> in Slack. Key channels: <em>#abx-team, #abx-sales-alignment, #marketing-all</em> (confirm actuals with Shab).</p>
+    </div>
+    <div class="card">
+      <h3>✅ Asana</h3>
+      <p>Where all ABX programs and tasks live. <strong>If it's not in Asana, it doesn't exist.</strong> Use it to track campaigns, account plays, cross-functional requests, and deadlines.</p>
+    </div>
+    <div class="card">
+      <h3>📧 Email</h3>
+      <p>Reserved for external-facing communication and formal stakeholder updates. Internal decisions and day-to-day updates live in Slack or Asana — not email.</p>
+    </div>
+  </div>
+
+  <h2 class="subsection">🗺 ABX Activities by Funnel Stage</h2>
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Stage</th><th>Marketing</th><th>Sales</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="badge badge-blue">Awareness</span></td>
+          <td>TOFU Digital Ads, Direct Mail, Field Events, Email Nurtures, 1:1 Landing Page</td>
+          <td>Account Plan, Prospect List, Lead/MQL Follow Up, LinkedIn Messages</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-blue">Consideration</span></td>
+          <td>Event Invites, MOFU Digital Ads, Industry/Persona Events, Custom One Pager, MOFU Email Nurture</td>
+          <td>Customer Reference Call, Custom Demo, Engagement with Champions, Partner Research</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-navy">Decision</span></td>
+          <td>BOFU Digital Ads, 1:1 Webinar, Small Group Events, Host EBC, EBC Content</td>
+          <td>Loop in Amp Execs, Ongoing Engagement</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-navy">Purchase</span></td>
+          <td>BOFU Digital Ads, In-Office Event, 1:1 Dinner/Happy Hour, 1:1 Gifting</td>
+          <td>Maintain Exec Presence, Ongoing Engagement</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="subsection">🏆 FY25 Program Examples & Results</h2>
+  <div class="card-grid">
+    <div class="card">
+      <h3>💌 Valentine's Day Direct Mail</h3>
+      <p>Amplitude-branded artisan chocolates sent to priority accounts — a memorable, high-touch moment at scale.</p>
+      <p style="margin-top:8px;"><span class="badge badge-green">$500K S2$ sourced</span></p>
+    </div>
+    <div class="card">
+      <h3>📺 Ongoing Contact-Level Ads (Influ2)</h3>
+      <p>Person-based advertising targeting decision-makers across ABX accounts with tailored messaging on LinkedIn, Instagram, X, and more.</p>
+      <p style="margin-top:8px;"><span class="badge badge-green">$480K S2$ sourced · $1.7M S2$ influenced</span></p>
+    </div>
+    <div class="card">
+      <h3>🎪 Disney Data & Analytics Conference</h3>
+      <p>Sponsored the Disney D&amp;A Conference with breakout sessions and executive dinners — strong brand presence at a strategic ABX account's own event.</p>
+      <p style="margin-top:8px;"><span class="badge badge-green">$1.7M S2 sourced</span></p>
+    </div>
+    <div class="card">
+      <h3>🍽 Small Group Executive Dinners</h3>
+      <p>Connex-powered executive dinners with senior leaders for intimate, high-end networking that deepened executive relationships.</p>
+      <p style="margin-top:8px;"><span class="badge badge-green">$1.9M S2$ sourced</span></p>
+    </div>
+    <div class="card">
+      <h3>🎁 Wildcard 1:1 Gifting</h3>
+      <p>Personalized contact profiles for priority ABX contacts — gifts crafted from professional and personal insights to capture attention and secure meetings.</p>
+      <p style="margin-top:8px;"><span class="badge badge-green">$525K S2$ sourced</span></p>
+    </div>
+    <div class="card">
+      <h3>🇮🇳 Reliance Retail Day — APJ</h3>
+      <p>Bespoke multi-day event for a new enterprise customer combining white-glove enablement with Amplitude storytelling.</p>
+      <p style="margin-top:8px;"><span class="badge badge-green">30+ stakeholders · 4 C-levels · 10 Director+</span></p>
+    </div>
+  </div>
+
+  <h2 class="subsection">🎯 Proven ABX Plays</h2>
+  <div class="collapsible-section">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      Play Type 1: Account Intelligence Brief <span class="chevron">▼</span>
+    </div>
+    <div class="collapsible-body">
+      <p><strong>When to use:</strong> Before AE meetings with Tier 1 accounts, for executive engagement prep, or when an account enters a key deal stage.</p>
+      <p style="margin-top:8px;"><strong>What it includes:</strong> Company overview, key stakeholders, recent news, product usage signals, 6sense intent data, open opp context, and personalized talking points.</p>
+      <p style="margin-top:8px;"><strong>Who builds it:</strong> ABX team member (often Dee for content, Kiersten for coordination). Claude can be used to accelerate research and drafting.</p>
+      <p style="margin-top:8px;"><strong>Turnaround:</strong> 24–48 hours for standard brief; same-day for urgent exec meetings.</p>
+    </div>
+  </div>
+
+  <div class="collapsible-section">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      Play Type 2: Targeted Email + Influ2 Ad Sequence <span class="chevron">▼</span>
+    </div>
+    <div class="collapsible-body">
+      <p><strong>When to use:</strong> When a Tier 1 or Tier 2 account shows active 6sense intent signals (Awareness → Consideration stage).</p>
+      <p style="margin-top:8px;"><strong>What it includes:</strong> 3–4 touchpoint email sequence (via Outreach/Marketo) + matched account-based display ads (via Influ2) targeting the known buying group at the account.</p>
+      <p style="margin-top:8px;"><strong>Who activates:</strong> ABX team briefs the play; Marketing Ops (Daniel Cuadra) executes in Marketo; Influ2 ads are configured by ABX or digital team.</p>
+      <p style="margin-top:8px;"><strong>Duration:</strong> Typically 4–6 weeks per account cluster.</p>
+    </div>
+  </div>
+
+  <div class="collapsible-section">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      Play Type 3: Executive Roundtable / 1:1 Dinner <span class="chevron">▼</span>
+    </div>
+    <div class="collapsible-body">
+      <p><strong>When to use:</strong> For Tier 1 strategic accounts in active pipeline — to accelerate deals, deepen executive relationships, or support expansion conversations.</p>
+      <p style="margin-top:8px;"><strong>What it includes:</strong> Intimate in-person event (dinner, roundtable, or hosted experience) with 5–15 executive contacts from ABX target accounts, curated by ABX and AE.</p>
+      <p style="margin-top:8px;"><strong>Who drives it:</strong> ABX owns the guest list and messaging; Field Marketing handles logistics and venue; Sales drives attendance for their accounts.</p>
+      <p style="margin-top:8px;"><strong>Lead time:</strong> Minimum 6–8 weeks for planning and outreach.</p>
+    </div>
+  </div>
+
+  <div class="collapsible-section">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      Play Type 4: Intent-Triggered SDR Sequence <span class="chevron">▼</span>
+    </div>
+    <div class="collapsible-body">
+      <p><strong>When to use:</strong> When 6sense detects strong purchase intent signals at a Tier 1 or Tier 2 account without active AE engagement.</p>
+      <p style="margin-top:8px;"><strong>What it includes:</strong> ABX notifies the relevant SDR and AE with intent context. SDR activates a targeted Outreach sequence using ABX-provided messaging. ABX may support with personalized content or ad layer.</p>
+      <p style="margin-top:8px;"><strong>Who coordinates:</strong> ABX (signal identification + messaging) + SDR (outreach execution) + AE (strategic overlay).</p>
+    </div>
+  </div>
+
+  <h2 class="subsection">🎪 Event Process Overview</h2>
+  <div class="card-grid">
+    <div class="card">
+      <h3>⬅️ Pre-Event (6–8 weeks out)</h3>
+      <ul>
+        <li>Finalize guest list with AE and ABX</li>
+        <li>Build ABX account target list for the event</li>
+        <li>Develop invitation messaging and sequence</li>
+        <li>Launch Outreach/Marketo invite sequence</li>
+        <li>Run Influ2 ads targeting registered accounts</li>
+        <li>Brief AEs on attendees before the event</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>📍 At-Event</h3>
+      <ul>
+        <li>Capture attendance in Salesforce campaign</li>
+        <li>Flag key account interactions for follow-up</li>
+        <li>AE completes any in-person account briefings</li>
+        <li>Capture action items and next steps in real time</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>➡️ Post-Event (within 48–72 hours)</h3>
+      <ul>
+        <li>Upload attendance to Salesforce campaign</li>
+        <li>Trigger post-event follow-up sequence in Marketo</li>
+        <li>Deliver AE follow-up talking points per account</li>
+        <li>Build event recap: attendance, pipeline impact, next steps</li>
+        <li>Share recap with Shab and sales leadership</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="subsection">📋 Your First 90 Days</h2>
+  <div class="ramp-track">
+    <div class="ramp-phase">
+      <div class="ramp-phase-header p30">
+        30 Days — Learn
+        <div class="sub">Understand the business, the team, and the accounts</div>
+      </div>
+      <ul>
+        <li>Complete Amplitude product onboarding (Amplitude Academy)</li>
+        <li>Shadow Shab, Kiersten (Sr. ABX Specialist), and Dee (Sr. ABX Manager) on active programs</li>
+        <li>Review the FY26 ABX account list in Salesforce</li>
+        <li>Attend all recurring meetings (ABX standup, AE sync, Marketing All-Hands)</li>
+        <li>Read the ABX charter and current-quarter plan</li>
+        <li>Get access to all tools (Salesforce, Marketo, 6sense, Asana, Glean, Claude) via Lumos in Slack</li>
+        <li>Meet your paired AEs and SDR contacts</li>
+        <li>Complete mandatory company compliance training</li>
+      </ul>
+    </div>
+    <div class="ramp-phase">
+      <div class="ramp-phase-header p60">
+        60 Days — Contribute
+        <div class="sub">Start executing on existing programs and account plays</div>
+      </div>
+      <ul>
+        <li>Own one active ABX play or account program end-to-end</li>
+        <li>Build your first account brief for a key account</li>
+        <li>Contribute to the weekly AE sync with your own account insights</li>
+        <li>Begin tracking account engagement in Salesforce and Amplitude</li>
+        <li>Collaborate with Demand Gen, Field Marketing, or Customer Marketing on a joint play</li>
+        <li>Deliver your first program recap (post-event or campaign summary)</li>
+      </ul>
+    </div>
+    <div class="ramp-phase">
+      <div class="ramp-phase-header p90">
+        90 Days — Lead
+        <div class="sub">Drive your own account programs and bring a point of view</div>
+      </div>
+      <ul>
+        <li>Own a defined pod of accounts</li>
+        <li>Propose and activate a new ABX play based on account signals</li>
+        <li>Present account performance to AEs or sales leadership</li>
+        <li>Establish your own working rhythm with paired AEs</li>
+        <li>Share a 90-day retrospective with learnings and recommendations</li>
+        <li>Align with Shab on H2 priorities and growth areas</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="subsection">💰 Procurement & Finance Workflow</h2>
+  <div class="highlight-box">
+    <h4>Start here before any purchase</h4>
+    <p>All vendor contracts and new purchases must go through <strong>ZIP</strong> first. No exceptions.</p>
+  </div>
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead><tr><th>Tool</th><th>Purpose</th><th>Contact</th></tr></thead>
+      <tbody>
+        <tr><td><strong>ZIP</strong></td><td>Procurement intake for any new vendor or contract. Start here before any purchase.</td><td>Brian Roberts</td></tr>
+        <tr><td><strong>Allocadia</strong></td><td>Budget management. Track spend against your ABX program budget.</td><td>Brian Roberts</td></tr>
+        <tr><td><strong>Navan</strong></td><td>Travel booking and expense management for business travel.</td><td>Self-serve + Navan support</td></tr>
+        <tr><td><strong>Ramp</strong></td><td>Corporate card for eligible purchases.</td><td>Brian Roberts (card eligibility)</td></tr>
+        <tr><td><strong>AP Workflow</strong></td><td>Invoice submission and approval.</td><td>Brian Roberts</td></tr>
+        <tr><td><strong>Lumos (Slack)</strong></td><td>Submit tools access requests for any new software or system access.</td><td>Self-serve in Slack</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB 6: TOOLS GUIDE
+══════════════════════════════════════════ -->
+<div class="tab-pane" id="tab-tools-guide">
+  <div class="section-header">
+    <h1>🛠 Tools Guide</h1>
+    <p>The full ABX tech stack — what each tool does, how you use it, and who owns it</p>
+  </div>
+
+  <div class="highlight-box success">
+    <h4>✅ Getting Tool Access</h4>
+    <p>All tool access requests must go through <strong>Lumos in Slack</strong>. Submit a request on Day 1 for the priority tools listed below.</p>
+  </div>
+
+  <h2 class="subsection">🔵 Core Tools (Used Daily)</h2>
+  <div class="card-grid">
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon">☁️</div>
+        <div>
+          <h3>Salesforce</h3>
+          <div class="tool-role">CRM — Source of Truth</div>
+        </div>
+      </div>
+      <p>Your primary source of truth for account data, pipeline, deal status, and the FY26 ABX account list. Use the <strong>Account Classification: FY26 ABX</strong> filter to pull your accounts. Also used to log all campaign engagement and track opportunity influence. <em>Contact: Daniel Cuadra / Omar Hani</em></p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon">✅</div>
+        <div>
+          <h3>Asana</h3>
+          <div class="tool-role">Program & Task Management</div>
+        </div>
+      </div>
+      <p>Where all ABX plays, campaigns, and tasks live. Every program should have an Asana task or project. Use it to track milestones, assign owners, and manage cross-functional requests. <strong>If it's not in Asana, it doesn't exist.</strong> <em>Workspace owner: Shab Jahan</em></p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon">📧</div>
+        <div>
+          <h3>Marketo</h3>
+          <div class="tool-role">Marketing Automation</div>
+        </div>
+      </div>
+      <p>Used for email program deployment, nurture flows, and ABX campaign execution. ABX team briefs programs; Marketing Ops (Daniel Cuadra) builds and deploys them in Marketo. All campaign engagement data flows back to Salesforce. <em>Contact: Daniel Cuadra</em></p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon">📊</div>
+        <div>
+          <h3>Amplitude Analytics</h3>
+          <div class="tool-role">Product Analytics & Account Signals</div>
+        </div>
+      </div>
+      <p>Use Amplitude for product engagement signals on existing customer accounts. Identify feature adoption gaps, expansion signals, and usage patterns that inform ABX play selection. <em>Contact: RevOps / Analytics team</em></p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon">📈</div>
+        <div>
+          <h3>Tableau</h3>
+          <div class="tool-role">Pipeline & Marketing Dashboards</div>
+        </div>
+      </div>
+      <p>Pipeline performance, ABX account health, and marketing program metrics. Key dashboards include the ABX pipeline influence report and the account engagement score view. <em>Contact: RevOps / Analytics team</em></p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon">🤖</div>
+        <div>
+          <h3>Claude (Anthropic)</h3>
+          <div class="tool-role">AI Research & Writing</div>
+        </div>
+      </div>
+      <p>Your AI assistant for research, writing, analysis, and building. Use it to accelerate account brief research, draft personalized messaging, analyze data, and build content faster. All Amplitude employees have access. <em>Contact: IT / Marketing Ops</em></p>
+    </div>
+  </div>
+
+  <h2 class="subsection">🎯 ABX-Specific Tools</h2>
+  <div class="card-grid">
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon">🔮</div>
+        <div>
+          <h3>6sense</h3>
+          <div class="tool-role">Intent Data & Account Intelligence</div>
+        </div>
+      </div>
+      <p>Your primary intent data and account intelligence platform. Use 6sense to identify accounts that are actively in-market for analytics solutions, track buying stage progression, prioritize outreach timing, and validate which accounts to include in ABX plays. <em>Access via: IT / Marketing Ops</em></p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon">📺</div>
+        <div>
+          <h3>Influ2</h3>
+          <div class="tool-role">ABX Display Advertising (Person-Based)</div>
+        </div>
+      </div>
+      <p>Person-based advertising platform for ABX. Unlike traditional display, Influ2 targets specific people (not just companies) within your buying group by job title and account. Used to run coordinated ad plays alongside email and sales outreach. <em>Access via: Paid Media / Marketing Ops</em></p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon">📬</div>
+        <div>
+          <h3>Outreach</h3>
+          <div class="tool-role">Sales Engagement & Sequencing</div>
+        </div>
+      </div>
+      <p>Used by AEs and SDRs for email sequencing and outbound engagement. ABX team provides messaging frameworks and sequence content; Sales/SDRs execute in Outreach. ABX should be able to view account sequences and engagement data. <em>Contact: Sales Ops / your AE</em></p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon">🌐</div>
+        <div>
+          <h3>Sanity CMS</h3>
+          <div class="tool-role">Content Management & Personalization</div>
+        </div>
+      </div>
+      <p>Content management system used for managing personalized web experiences and ABX landing page content. Used when ABX programs require custom web pages or personalized content experiences. <em>Access via: Dee Ward / Web team</em></p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon">💼</div>
+        <div>
+          <h3>LinkedIn Campaign Manager</h3>
+          <div class="tool-role">ABX LinkedIn Advertising</div>
+        </div>
+      </div>
+      <p>Used for ABX display advertising and audience targeting by account, persona, and deal stage on LinkedIn. Works alongside Influ2 for broader account reach. Often used for executive-level content targeting at Tier 1 accounts. <em>Access via: Paid Media / Marketing Ops</em></p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon">🔍</div>
+        <div>
+          <h3>Glean</h3>
+          <div class="tool-role">Internal Knowledge Search</div>
+        </div>
+      </div>
+      <p>Internal knowledge search engine. Find docs, Slack threads, past decks, meeting notes, and company information in one place. Use it before asking teammates for resources — the answer is often already in Glean. <em>Contact: IT</em></p>
+    </div>
+  </div>
+
+  <h2 class="subsection">💰 Finance & Operations Tools</h2>
+  <div class="card-grid">
+    <div class="tool-card">
+      <div class="tool-header"><div class="tool-icon">📋</div><div><h3>ZIP</h3><div class="tool-role">Procurement Intake</div></div></div>
+      <p>Start here before any new vendor contract or purchase. Required step before any spend can be approved. Contact Brian Roberts for guidance.</p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-header"><div class="tool-icon">💰</div><div><h3>Allocadia</h3><div class="tool-role">Budget Management</div></div></div>
+      <p>Track your ABX program spend against budget. All planned and actual spend should be logged here. Contact Brian Roberts for setup and training.</p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-header"><div class="tool-icon">✈️</div><div><h3>Navan</h3><div class="tool-role">Travel & Expense</div></div></div>
+      <p>Book all business travel and submit expense reports through Navan. Company travel policy applies. Self-serve with Navan support.</p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-header"><div class="tool-icon">💳</div><div><h3>Ramp</h3><div class="tool-role">Corporate Card</div></div></div>
+      <p>Corporate card for eligible purchases. Check with Brian Roberts on card eligibility and category restrictions.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB 7: STANDARDS & FAQs
+══════════════════════════════════════════ -->
+<div class="tab-pane" id="tab-standards-faqs">
+  <div class="section-header">
+    <h1>📋 Standards & FAQs</h1>
+    <p>Copy rules, program standards, working norms, and answers to common questions</p>
+  </div>
+
+  <h2 class="subsection">✍️ Copy & Messaging Standards</h2>
+  <div class="collapsible-section">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      Voice & Tone Principles <span class="chevron">▼</span>
+    </div>
+    <div class="collapsible-body">
+      <p>All ABX content should follow Amplitude's brand voice: <strong>Magnetic, Provocative, and Empowering.</strong></p>
+      <div class="card-grid-3" style="margin-top:12px;">
+        <div class="card">
+          <h3>🧲 Magnetic</h3>
+          <p>Draw people in. Spark curiosity. Paint a compelling vision. Don't open with "We'd like to invite you." Open with what they'll get out of it.</p>
+        </div>
+        <div class="card">
+          <h3>⚡ Provocative</h3>
+          <p>Challenge assumptions. Be bold and punchy. No hedging or corporate speak. "We help you grow faster" not "We offer solutions that may enhance your operational efficiency."</p>
+        </div>
+        <div class="card">
+          <h3>💪 Empowering</h3>
+          <p>Focus on "you" and what the reader can do. Be the trusted guide, not the authority. Simplify, inspire confidence, make them feel capable.</p>
+        </div>
+      </div>
+      <div class="highlight-box" style="margin-top:12px;">
+        <h4>Writing in one line</h4>
+        <p>Brief. Real. Conversational. Relevant. 8th-grade reading level. Human-to-human, never corporate. Always reference <a href="https://brand.amplitude.com" target="_blank">brand.amplitude.com</a> for full guidelines.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="collapsible-section">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      Email Subject Line Rules <span class="chevron">▼</span>
+    </div>
+    <div class="collapsible-body">
+      <ul style="padding-left:20px; font-size:13px; color:var(--amp-muted); line-height:2.2;">
+        <li>Keep subject lines under <strong>45 characters</strong> for mobile rendering</li>
+        <li>Lead with value or curiosity — not a company name or product feature</li>
+        <li>Avoid ALL CAPS, excessive punctuation (!!), and spammy words</li>
+        <li>Personalize with <strong>[First Name]</strong> or <strong>[Company]</strong> tokens when appropriate</li>
+        <li>A/B test subject lines on every program — we always have a winner and a variant</li>
+        <li>Preview text should extend the subject line, not repeat it</li>
+        <li>Never use "I wanted to reach out" as a subject or opener — be direct</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="collapsible-section">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      Personalization Standards <span class="chevron">▼</span>
+    </div>
+    <div class="collapsible-body">
+      <p>ABX personalization should feel researched, not templated. Avoid lazy personalization like inserting a company name — that's not personalization, it's mail merge.</p>
+      <ul style="padding-left:20px; margin-top:8px; font-size:13px; color:var(--amp-muted); line-height:2.2;">
+        <li><strong>Tier 1 accounts:</strong> Full 1:1 personalization — company-specific challenges, recent news, named stakeholder context</li>
+        <li><strong>Tier 2 accounts:</strong> Cluster-level personalization — industry/vertical narrative + deal stage messaging</li>
+        <li><strong>Tier 3 accounts:</strong> Segment-level personalization — persona-based messaging, intent-signal timing</li>
+        <li>Use Claude for research acceleration — it can find recent company news, 10-K language, exec quotes, and product signals quickly</li>
+        <li>Always sanity-check AI-generated research before using it in outreach</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="collapsible-section">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      Content Review & Approval Process <span class="chevron">▼</span>
+    </div>
+    <div class="collapsible-body">
+      <ul style="padding-left:20px; font-size:13px; color:var(--amp-muted); line-height:2.2;">
+        <li><strong>Email copy:</strong> ABX team member drafts → Dee Ward reviews for voice/brand → Shab approves for Tier 1 accounts</li>
+        <li><strong>Event invitations:</strong> ABX drafts → Field Marketing reviews logistics → Shab approves messaging</li>
+        <li><strong>Account briefs:</strong> ABX team member drafts → AE reviews for accuracy → delivered within 24–48 hours</li>
+        <li><strong>Executive communications:</strong> Always routed through Shab before send</li>
+        <li><strong>Anything public-facing:</strong> Must go through Brand / PMM review before publication</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <h2 class="subsection">❓ Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">What's the difference between ABX and Account Based Marketing (ABM)? <span>▼</span></div>
+    <div class="faq-a">ABM traditionally refers to targeted marketing campaigns for specific accounts. ABX (Account Based <em>Experience</em>) is a broader motion — it includes marketing, but also sales coordination, customer success alignment, and the entire experience an account has with Amplitude across every touchpoint. ABX is the orchestration layer; ABM is one channel within it.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">How do I get an account added to the ABX target list? <span>▼</span></div>
+    <div class="faq-a">Speak to Shab or bring it up in the next Sales Sync. The account team (AE + ABX) reviews the fit criteria: pipeline potential, strategic alignment, and resource capacity. Accounts are formally added via the Account Classification field in Salesforce. The list is reviewed and updated quarterly as part of the planning cycle.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">How do I know which play to run for a specific account? <span>▼</span></div>
+    <div class="faq-a">Start with the account's signals: What stage is the opportunity? What 6sense buying stage is the account in? Is there an AE requesting support? From there, match the signal to the play type. Intent signal → email + ads sequence. Pre-meeting → account brief. Deal stage stuck → executive engagement. When in doubt, bring it to the ABX team standup — we decide plays together.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">How long does it take to build and launch an ABX play? <span>▼</span></div>
+    <div class="faq-a">Depends on the play type. Account brief: 24–48 hours. Email sequence: 1–2 weeks (including Marketo build). Event: 6–8 weeks minimum. Influ2 ad campaign: 1–2 weeks to set up. Always create the Asana task first so we can track scope, ownership, and timeline.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">What's our relationship with Field Marketing vs. ABX? <span>▼</span></div>
+    <div class="faq-a">Field Marketing runs regional and event programs broadly. ABX provides the account targeting precision for those programs — which accounts to invite, what messaging to use, how to follow up. We collaborate on every event that involves ABX accounts. ABX doesn't "own" events, but we have a strong seat at the table for guest list, messaging, and follow-up strategy.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">How do we report on ABX program performance? <span>▼</span></div>
+    <div class="faq-a">Primary reporting happens in Salesforce (campaign membership, pipeline influence) and Tableau (dashboards). For each play or program, ABX team builds a post-program recap covering: accounts engaged, touchpoints delivered, pipeline influenced, deals progressed, and next steps. Recaps go to Shab and relevant AEs. QBR-level summaries go to sales and marketing leadership.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">Can I use Claude for account briefs and outreach drafts? <span>▼</span></div>
+    <div class="faq-a">Yes — Claude is a sanctioned tool at Amplitude and encouraged for accelerating research, drafting, and analysis. Use it to pull together company research, summarize news, draft email copy, or build account briefs faster. Always review AI-generated output for accuracy before sending anything externally. Never paste sensitive customer data or deal specifics into any AI tool without confirming with your manager or IT.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">What is 6sense and why do we use it? <span>▼</span></div>
+    <div class="faq-a">6sense is our intent data platform. It tracks digital buying signals across the web — when companies are researching topics related to product analytics, digital experience, or analytics platforms — and maps those signals to known accounts. This tells us which of our 118 accounts are "in market" and when. We use 6sense to prioritize which plays to activate and when to time outreach for maximum relevance.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">What's the Outreach vs. Marketo split? <span>▼</span></div>
+    <div class="faq-a">Outreach is used by Sales/SDRs for direct 1:1 outbound sequences — rep-sent, personalized emails. Marketo is used for marketing-sent programs — branded campaigns, event invites, nurture sequences at scale. ABX typically provides messaging for both, but we own the Marketo programs and advise on Outreach sequence content. Marketing Ops (Daniel Cuadra) manages Marketo; Sales Ops manages Outreach.</div>
+  </div>
+
+  <hr class="divider">
+
+  <h2 class="subsection">📐 ABX Operating Principles</h2>
+  <div class="card">
+    <ul>
+      <li><strong>Account first, campaign second.</strong> Always start with "What does this account need?" not "What content can we push to them?"</li>
+      <li><strong>AE partnership is non-negotiable.</strong> ABX without AE alignment is wasted effort. Every play needs an AE owner who's bought in.</li>
+      <li><strong>If it's not in Asana, it doesn't exist.</strong> Log every play, task, and request in Asana before starting.</li>
+      <li><strong>Move fast, document as you go.</strong> ABX is fast-moving. Don't let perfect be the enemy of done — but always leave a trail.</li>
+      <li><strong>Data before instinct.</strong> Use 6sense, Salesforce, and Amplitude data to validate play selection. Gut feel is a starting point, not a strategy.</li>
+      <li><strong>Recaps are mandatory.</strong> Every program gets a post-play recap. If you can't measure it, you can't improve it.</li>
+      <li><strong>Escalate early.</strong> If a play is blocked, a stakeholder is unresponsive, or a timeline is slipping — tell Shab immediately. Don't let issues fester.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ── JS ── -->
+<script>
+  // Tab switching
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // Collapsible sections
+  function toggleCollapsible(header) {
+    header.classList.toggle('open');
+    header.nextElementSibling.classList.toggle('open');
+  }
+
+  // FAQ
+  function toggleFaq(q) {
+    const a = q.nextElementSibling;
+    const isOpen = a.classList.contains('open');
+    // close all
+    document.querySelectorAll('.faq-a').forEach(x => x.classList.remove('open'));
+    if (!isOpen) a.classList.add('open');
+  }
+
+  // Search
+  const searchInput = document.getElementById('search-input');
+  const searchBar = document.getElementById('search-results-bar');
+  const searchSummary = document.getElementById('search-summary');
+
+  function clearSearch() {
+    searchInput.value = '';
+    doSearch('');
+  }
+
+  function doSearch(query) {
+    // Remove existing highlights
+    document.querySelectorAll('.search-highlight').forEach(el => {
+      const parent = el.parentNode;
+      parent.replaceChild(document.createTextNode(el.textContent), el);
+      parent.normalize();
+    });
+
+    if (!query || query.trim().length < 2) {
+      searchBar.style.display = 'none';
+      return;
+    }
+
+    const q = query.trim().toLowerCase();
+    let totalMatches = 0;
+    const matchedTabs = new Set();
+
+    document.querySelectorAll('.tab-pane').forEach(pane => {
+      const tabId = pane.id.replace('tab-', '');
+      let paneMatches = 0;
+
+      // Walk text nodes
+      const walker = document.createTreeWalker(pane, NodeFilter.SHOW_TEXT, {
+        acceptNode: n => n.parentNode.tagName !== 'SCRIPT' && n.parentNode.tagName !== 'STYLE' ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT
+      });
+
+      const nodes = [];
+      while (walker.nextNode()) nodes.push(walker.currentNode);
+
+      nodes.forEach(node => {
+        const text = node.textContent;
+        const lower = text.toLowerCase();
+        if (lower.includes(q)) {
+          const regex = new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+          const frag = document.createDocumentFragment();
+          let last = 0, m;
+          regex.lastIndex = 0;
+          while ((m = regex.exec(text)) !== null) {
+            frag.appendChild(document.createTextNode(text.slice(last, m.index)));
+            const mark = document.createElement('mark');
+            mark.className = 'search-highlight';
+            mark.textContent = m[1];
+            frag.appendChild(mark);
+            last = m.index + m[1].length;
+            paneMatches++;
+          }
+          frag.appendChild(document.createTextNode(text.slice(last)));
+          node.parentNode.replaceChild(frag, node);
+        }
+      });
+
+      if (paneMatches > 0) {
+        totalMatches += paneMatches;
+        matchedTabs.add(tabId);
+      }
+    });
+
+    searchBar.style.display = 'block';
+    if (totalMatches === 0) {
+      searchSummary.textContent = `No results found for "${query}"`;
+    } else {
+      searchSummary.textContent = `Found ${totalMatches} match${totalMatches !== 1 ? 'es' : ''} across ${matchedTabs.size} tab${matchedTabs.size !== 1 ? 's' : ''} for "${query}"`;
+
+      // If current tab has no matches, switch to the first tab with matches
+      const activeTab = document.querySelector('.tab-btn.active');
+      const activeTabId = activeTab ? activeTab.dataset.tab : null;
+      if (activeTabId && !matchedTabs.has(activeTabId) && matchedTabs.size > 0) {
+        const firstMatch = [...matchedTabs][0];
+        document.querySelectorAll('.tab-btn').forEach(b => {
+          b.classList.toggle('active', b.dataset.tab === firstMatch);
+        });
+        document.querySelectorAll('.tab-pane').forEach(p => {
+          p.classList.toggle('active', p.id === 'tab-' + firstMatch);
+        });
+        // Open any collapsibles in that pane that contain highlights
+        document.getElementById('tab-' + firstMatch).querySelectorAll('.collapsible-body').forEach(body => {
+          if (body.querySelector('.search-highlight')) {
+            body.classList.add('open');
+            body.previousElementSibling.classList.add('open');
+          }
+        });
+      }
+
+      // Scroll to first match in active pane
+      const activePane = document.querySelector('.tab-pane.active');
+      const firstHighlight = activePane ? activePane.querySelector('.search-highlight') : null;
+      if (firstHighlight) firstHighlight.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+
+  let searchTimeout;
+  searchInput.addEventListener('input', () => {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => doSearch(searchInput.value), 250);
+  });
+</script>
+
+</body>
+</html>
