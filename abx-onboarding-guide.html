@@ -274,13 +274,20 @@
     margin-bottom: 12px;
   }
   .person-avatar {
-    width: 44px; height: 44px;
+    width: 56px; height: 56px;
     border-radius: 50%;
     background: var(--amp-blue);
     color: #fff;
     display: flex; align-items: center; justify-content: center;
     font-weight: 800; font-size: 17px;
     flex-shrink: 0;
+    overflow: hidden;
+  }
+  .person-avatar img {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
   }
   .person-avatar.navy { background: var(--amp-navy); }
   .person-avatar.lilac { background: var(--amp-lilac); }
@@ -502,7 +509,7 @@
 
   <div class="highlight-box">
     <h4>The one-liner</h4>
-    <p>ABX isn't a campaign channel. It's a go-to-market motion — how we orchestrate personalized, coordinated experiences for our most strategic enterprise accounts across marketing, sales, and customer success.</p>
+    <p>ABX isn’t a marketing campaign — it’s a coordinated go-to-market motion where sales and marketing work together to create personalized engagement, build pipeline, and accelerate strategic accounts.</p>
   </div>
 
   <div class="stat-row">
@@ -520,11 +527,11 @@
     </div>
     <div class="card">
       <h3>🚀 Coordinated Programs</h3>
-      <p>We build and run coordinated plays across email, ads, events, direct mail, gifting, and direct outreach — personalized by account, buying stage, and engagement signal.</p>
+      <p>We build and run coordinated plays across email, ads, events, direct mail, gifting,  direct outreach, and sales outbound — personalized by account, buying stage, and engagement signal.</p>
     </div>
     <div class="card">
       <h3>🤝 Sales Alignment</h3>
-      <p>We partner with AEs, SDRs, and Field Marketing to ensure every account gets consistent, coordinated treatment from first touch through close and expansion. (Note: Field Marketing is under Marketing, not Sales.)</p>
+      <p>We partner with AEs and SDRs to ensure every account gets consistent, coordinated treatment from first touch through close and expansion.</p>
     </div>
   </div>
 
@@ -561,7 +568,7 @@
           <td><strong>FY24</strong></td>
           <td>3,500 accounts</td>
           <td><span class="badge badge-orange">Unfocused</span></td>
-          <td>Mktg Sourced: $6.9M &nbsp;|&nbsp; Influenced: $12.7M</td>
+          <td>Program was launched. Mktg Sourced: $6.9M &nbsp;|&nbsp; Influenced: $12.7M</td>
         </tr>
         <tr>
           <td><strong>FY25</strong></td>
@@ -633,7 +640,9 @@
 
   <h2 class="subsection">🏢 Core ABX Team</h2>
   <div class="person-card">
-    <div class="person-avatar">SJ</div>
+    <div class="person-avatar" id="avatar-shab">
+      <img src="./shab.jpg" alt="Shab Jahan" onerror="this.parentElement.innerHTML='SJ'">
+    </div>
     <div class="person-info">
       <h3>Shab Jahan</h3>
       <div class="role">Director, ABX and Global Strategic Programs</div>
@@ -641,7 +650,9 @@
     </div>
   </div>
   <div class="person-card">
-    <div class="person-avatar lilac">KM</div>
+    <div class="person-avatar lilac" id="avatar-kiersten">
+      <img src="./kiersten.jpg" alt="Kiersten McPoyle" onerror="this.parentElement.innerHTML='KM'">
+    </div>
     <div class="person-info">
       <h3>Kiersten McPoyle</h3>
       <div class="role">Sr. ABX Specialist</div>
@@ -649,7 +660,9 @@
     </div>
   </div>
   <div class="person-card">
-    <div class="person-avatar violet">DW</div>
+    <div class="person-avatar violet" id="avatar-dee">
+      <img src="./dee.jpg" alt="Dee Ward" onerror="this.parentElement.innerHTML='DW'">
+    </div>
     <div class="person-info">
       <h3>Dee Ward</h3>
       <div class="role">Sr. ABX Manager</div>
@@ -664,7 +677,7 @@
         <tr><th>Topic</th><th>Who to Contact</th></tr>
       </thead>
       <tbody>
-        <tr><td>ABX program strategy & account prioritization</td><td><strong>Shab Jahan</strong></td></tr>
+        <tr><td>ABX program overview, strategy, &amp; account prioritization</td><td><strong>Shab Jahan</strong></td></tr>
         <tr><td>Campaign execution & program coordination</td><td><strong>Kiersten McPoyle</strong> for guidance</td></tr>
         <tr><td>Content, creative, or personalization requests</td><td><strong>Helsi Robino</strong></td></tr>
         <tr><td>Sales alignment & AE partnership</td><td>Your paired AE / Sales lead</td></tr>
@@ -677,11 +690,108 @@
     </table>
   </div>
 
-  <h2 class="subsection">📍 SDR Contacts by Region</h2>
+  <h2 class="subsection">🌐 The Pod Model — How We Work Together</h2>
+  <div class="highlight-box">
+    <h4>ABX is the Main POC — not the only POC</h4>
+    <p>Every ABX account is supported by a full pod of cross-functional partners. ABX coordinates and connects all the functions below toward a single shared goal: pipeline and revenue for the account.</p>
+  </div>
+  <div style="display:flex;justify-content:center;margin-bottom:24px;">
+    <svg viewBox="0 0 520 380" xmlns="http://www.w3.org/2000/svg" style="max-width:520px;width:100%;">
+      <!-- Lines from center to satellites -->
+      <line x1="260" y1="190" x2="260" y2="80" stroke="#D0D9F0" stroke-width="1.5"/>
+      <line x1="260" y1="190" x2="370" y2="120" stroke="#D0D9F0" stroke-width="1.5"/>
+      <line x1="260" y1="190" x2="400" y2="220" stroke="#D0D9F0" stroke-width="1.5"/>
+      <line x1="260" y1="190" x2="350" y2="310" stroke="#D0D9F0" stroke-width="1.5"/>
+      <line x1="260" y1="190" x2="220" y2="320" stroke="#D0D9F0" stroke-width="1.5"/>
+      <line x1="260" y1="190" x2="120" y2="300" stroke="#D0D9F0" stroke-width="1.5"/>
+      <line x1="260" y1="190" x2="110" y2="205" stroke="#D0D9F0" stroke-width="1.5"/>
+      <line x1="260" y1="190" x2="155" y2="110" stroke="#D0D9F0" stroke-width="1.5"/>
+      <!-- Center: Account -->
+      <circle cx="260" cy="190" r="48" fill="#0052F2"/>
+      <text x="260" y="186" text-anchor="middle" fill="white" font-size="13" font-weight="700" font-family="system-ui,sans-serif">Account</text>
+      <!-- ABX (main POC) -->
+      <circle cx="260" cy="68" r="36" fill="#6980FF"/>
+      <text x="260" y="63" text-anchor="middle" fill="white" font-size="10" font-weight="700" font-family="system-ui,sans-serif">ABX</text>
+      <text x="260" y="76" text-anchor="middle" fill="white" font-size="9" font-family="system-ui,sans-serif">(Main POC)</text>
+      <!-- Growth -->
+      <circle cx="375" cy="112" r="34" fill="#A373FF" opacity="0.85"/>
+      <text x="375" y="116" text-anchor="middle" fill="white" font-size="10" font-weight="600" font-family="system-ui,sans-serif">Growth</text>
+      <!-- Regional Field Mktg -->
+      <circle cx="408" cy="220" r="34" fill="#A373FF" opacity="0.7"/>
+      <text x="408" y="214" text-anchor="middle" fill="white" font-size="9" font-weight="600" font-family="system-ui,sans-serif">Regional</text>
+      <text x="408" y="225" text-anchor="middle" fill="white" font-size="9" font-weight="600" font-family="system-ui,sans-serif">Field Mktg</text>
+      <!-- Global Campaign -->
+      <circle cx="348" cy="315" r="34" fill="#A373FF" opacity="0.7"/>
+      <text x="348" y="310" text-anchor="middle" fill="white" font-size="9" font-weight="600" font-family="system-ui,sans-serif">Global</text>
+      <text x="348" y="321" text-anchor="middle" fill="white" font-size="9" font-weight="600" font-family="system-ui,sans-serif">Campaign</text>
+      <!-- Corporate & Brand -->
+      <circle cx="218" cy="325" r="34" fill="#A373FF" opacity="0.7"/>
+      <text x="218" y="319" text-anchor="middle" fill="white" font-size="9" font-weight="600" font-family="system-ui,sans-serif">Corporate</text>
+      <text x="218" y="330" text-anchor="middle" fill="white" font-size="9" font-weight="600" font-family="system-ui,sans-serif">&amp; Brand</text>
+      <!-- Partner -->
+      <circle cx="115" cy="305" r="34" fill="#A373FF" opacity="0.7"/>
+      <text x="115" y="309" text-anchor="middle" fill="white" font-size="10" font-weight="600" font-family="system-ui,sans-serif">Partner</text>
+      <!-- PMM & Advocacy -->
+      <circle cx="100" cy="200" r="34" fill="#A373FF" opacity="0.7"/>
+      <text x="100" y="195" text-anchor="middle" fill="white" font-size="9" font-weight="600" font-family="system-ui,sans-serif">PMM &amp;</text>
+      <text x="100" y="206" text-anchor="middle" fill="white" font-size="9" font-weight="600" font-family="system-ui,sans-serif">Advocacy</text>
+      <!-- Sales -->
+      <circle cx="148" cy="108" r="34" fill="#A373FF" opacity="0.85"/>
+      <text x="148" y="100" text-anchor="middle" fill="white" font-size="9" font-weight="600" font-family="system-ui,sans-serif">Sales</text>
+      <text x="148" y="111" text-anchor="middle" fill="white" font-size="8" font-family="system-ui,sans-serif">AE/SDR/SE</text>
+      <text x="148" y="121" text-anchor="middle" fill="white" font-size="8" font-family="system-ui,sans-serif">CSM/Value</text>
+    </svg>
+  </div>
+
+  <h2 class="subsection">📍 Sales Leaders by Region</h2>
   <div class="table-wrap">
     <table class="data-table">
       <thead>
-        <tr><th>Region</th><th>SDR Contact</th></tr>
+        <tr><th>Segment</th><th>Region</th><th>Leaders</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="8"><span class="badge badge-navy">Strategic</span></td>
+          <td>AMER East</td><td>Angela · Greg</td>
+        </tr>
+        <tr><td>AMER South</td><td>Neil</td></tr>
+        <tr><td>AMER Central</td><td>Sean Bell</td></tr>
+        <tr><td>AMER PNW</td><td>Robyn</td></tr>
+        <tr><td>AMER Bay Area</td><td>Antonia · MB</td></tr>
+        <tr><td>AMER West</td><td>Kyle</td></tr>
+        <tr><td>EMEA (via AMER Strat overlap)</td><td>—</td></tr>
+        <tr><td>APJ (via Shab as POC)</td><td>—</td></tr>
+        <tr>
+          <td rowspan="4"><span class="badge badge-blue">AMER Majors</span></td>
+          <td>West</td><td>Anthony</td>
+        </tr>
+        <tr><td>Central</td><td>Anush</td></tr>
+        <tr><td>South</td><td>Adam</td></tr>
+        <tr><td>East</td><td>Brian</td></tr>
+        <tr>
+          <td><span class="badge badge-orange">AMER Emerging</span></td>
+          <td>All</td><td>Rob · Shawn Hensley</td>
+        </tr>
+        <tr>
+          <td rowspan="4"><span class="badge badge-green">EMEA</span></td>
+          <td>North &amp; DACH</td><td>Nick</td>
+        </tr>
+        <tr><td>UKI</td><td>Alice</td></tr>
+        <tr><td>Central &amp; MEA</td><td>Tansu</td></tr>
+        <tr><td>France</td><td>Jeremy</td></tr>
+        <tr>
+          <td><span class="badge badge-green">APJ</span></td>
+          <td>ANZ &amp; RoAsia</td><td>Matt Bennett · Madhuri Krishnan</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="subsection">📍 SDR Leaders by Region</h2>
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr><th>Region</th><th>SDR LEADERS</th></tr>
       </thead>
       <tbody>
         <tr><td><span class="badge badge-blue">AMER West</span></td><td><strong>Lauren Hargarten</strong></td></tr>
@@ -714,7 +824,7 @@
   <div class="card-grid">
     <div class="card">
       <h3>👩‍💼 Sales / Enterprise AEs</h3>
-      <p>ABX runs in lockstep with your paired AEs. Weekly sync, account brief delivery, and play activation all happen in partnership with AEs. They are your primary signal source and primary beneficiary.</p>
+      <p>ABX runs in lockstep with your paired AEs. Weekly Slack communications, Monthly Zoom sync, account brief delivery, and play activation all happen in partnership with AEs. They are your primary signal source and primary beneficiary.</p>
     </div>
     <div class="card">
       <h3>📣 Field Marketing</h3>
@@ -754,7 +864,7 @@
   </div>
 
   <div class="stat-row">
-    <div class="stat-chip"><div class="num">118</div><div class="lbl">Total FY26 ABX Accounts</div></div>
+    <div class="stat-chip"><div class="num">118</div><div class="lbl">Total FY26 ABX Parent Accounts</div></div>
     <div class="stat-chip navy"><div class="num">57</div><div class="lbl">Strategic (AMER)</div></div>
     <div class="stat-chip lilac"><div class="num">34</div><div class="lbl">AMER Majors + Emerging</div></div>
     <div class="stat-chip violet"><div class="num">27</div><div class="lbl">EMEA + APJ</div></div>
@@ -924,7 +1034,7 @@
     </div>
     <div class="collapsible-body">
       <ul style="padding-left:20px; font-size:13px; color:var(--amp-muted); line-height:2;">
-        <li><strong>Company overview</strong> — industry, size, Amplitude product usage</li>
+        <li><strong>Company overview</strong> — industry, size, Amplitude product usage, HQ location</li>
         <li><strong>Current deal status</strong> — open opps, stage, close date, ACV</li>
         <li><strong>Key contacts</strong> — economic buyer, champion, influencers, blockers</li>
         <li><strong>Engagement history</strong> — past events attended, emails opened, content downloaded</li>
@@ -982,6 +1092,17 @@
       <div>
         <div class="rl-title"><a href="https://docs.google.com/document/d/12MOOSeISPaRq0NnYIzee0j_Xd_oabrudfmzQVeje4HU/edit?tab=t.0" target="_blank">Account Notes</a></div>
         <div class="rl-desc">Running notes and context for ABX target accounts.</div>
+      </div>
+    </li>
+  </ul>
+
+  <h2 class="subsection">📬 Requests & Intake</h2>
+  <ul class="resource-list">
+    <li>
+      <span class="resource-icon">📝</span>
+      <div>
+        <div class="rl-title"><a href="https://form.asana.com/?k=nN2K3IjA1kQVeygtSbWbHA&d=18285554557078" target="_blank">Marketing Product Request Form</a></div>
+        <div class="rl-desc">Use this form for all MOPs and Creative requests — campaign briefs, email builds, design assets, and more.</div>
       </div>
     </li>
   </ul>
@@ -1087,7 +1208,6 @@
     <h3>Priority tools to request on Day 1</h3>
     <ul>
       <li>Salesforce (CRM access)</li>
-      <li>Asana</li>
       <li>Marketo (Marketing automation — via Marketing Ops)</li>
       <li>6sense (Intent data platform)</li>
       <li>Glean (Internal search)</li>
@@ -1147,13 +1267,13 @@
         </tr>
         <tr>
           <td><strong>ABX ↔ Sales Sync</strong></td>
-          <td><span class="badge badge-blue">Weekly</span></td>
+          <td><span class="badge badge-orange">Monthly</span></td>
           <td>ABX + AE leads</td>
           <td>Account alignment, play activation</td>
         </tr>
         <tr>
           <td><strong>Marketing All-Hands</strong></td>
-          <td><span class="badge badge-blue">Biweekly</span></td>
+          <td><span class="badge badge-orange">Monthly</span></td>
           <td>All of Marketing</td>
           <td>Company updates, cross-team alignment</td>
         </tr>
@@ -1180,6 +1300,12 @@
           <td><span class="badge badge-orange">Monthly</span></td>
           <td>Marketing + Sales leadership</td>
           <td>Strategic alignment, exec updates</td>
+        </tr>
+		  <tr>
+          <td><strong>Company All-Hands</strong></td>
+          <td><span class="badge badge-blue">Bi-Weekly</span></td>
+          <td>Entire company</td>
+          <td>Company updates</td>
         </tr>
       </tbody>
     </table>
@@ -1215,18 +1341,14 @@
   </div>
 
   <h2 class="subsection">💬 Day-to-Day Communication Norms</h2>
-  <div class="card-grid-3">
+  <div class="card-grid">
     <div class="card">
       <h3>💬 Slack</h3>
-      <p>Primary async channel for quick questions, FYIs, and program updates. Submit all tool access requests via <strong>Lumos</strong> in Slack. Key channels: <em>#abx-team, #abx-sales-alignment, #marketing-all</em> (confirm actuals with Shab).</p>
-    </div>
-    <div class="card">
-      <h3>✅ Asana</h3>
-      <p>Where all ABX programs and tasks live. <strong>If it's not in Asana, it doesn't exist.</strong> Use it to track campaigns, account plays, cross-functional requests, and deadlines.</p>
+      <p>Primary async channel for quick questions, FYIs, and program updates. Submit all tool access requests via <strong>Lumos</strong> in Slack. Key channels: <em>#abx-dream-team, #abx-squad, #marketing-team, #enterprise-marketing.</em> </p>
     </div>
     <div class="card">
       <h3>📧 Email</h3>
-      <p>Reserved for external-facing communication and formal stakeholder updates. Internal decisions and day-to-day updates live in Slack or Asana — not email.</p>
+      <p>Reserved for external-facing communication and formal stakeholder updates. Internal decisions and day-to-day updates live in Slack — not email.</p>
     </div>
   </div>
 
@@ -1384,10 +1506,10 @@
       </div>
       <ul>
         <li>Complete Amplitude product onboarding (Amplitude Academy)</li>
-        <li>Shadow Shab, Kiersten (Sr. ABX Specialist), and Dee (Sr. ABX Manager) on active programs</li>
+        <li>Shadow Shab and Kiersten on active programs</li>
         <li>Review the FY26 ABX account list in Salesforce</li>
         <li>Attend all recurring meetings (ABX standup, AE sync, Marketing All-Hands)</li>
-        <li>Read the ABX charter and current-quarter plan</li>
+        <li>Read the ABX current-quarter plan</li>
         <li>Get access to all tools (Salesforce, Marketo, 6sense, Asana, Glean, Claude) via Lumos in Slack</li>
         <li>Meet your paired AEs and SDR contacts</li>
         <li>Complete mandatory company compliance training</li>
@@ -1401,9 +1523,9 @@
       <ul>
         <li>Own one active ABX play or account program end-to-end</li>
         <li>Build your first account brief for a key account</li>
-        <li>Contribute to the weekly AE sync with your own account insights</li>
+        <li>Contribute to the weekly/monthly AE syncs with your own account insights</li>
         <li>Begin tracking account engagement in Salesforce and Amplitude</li>
-        <li>Collaborate with Demand Gen, Field Marketing, or Customer Marketing on a joint play</li>
+        <li>Collaborate with Growth Marketing, Field Marketing, or Customer Marketing on a joint play</li>
         <li>Deliver your first program recap (post-event or campaign summary)</li>
       </ul>
     </div>
@@ -1434,9 +1556,8 @@
       <tbody>
         <tr><td><strong>ZIP</strong></td><td>Procurement intake for any new vendor or contract. Start here before any purchase.</td><td>Brian Roberts</td></tr>
         <tr><td><strong>Allocadia</strong></td><td>Budget management. Track spend against your ABX program budget.</td><td>Brian Roberts</td></tr>
-        <tr><td><strong>Navan</strong></td><td>Travel booking and expense management for business travel.</td><td>Self-serve + Navan support</td></tr>
-        <tr><td><strong>Ramp</strong></td><td>Corporate card for eligible purchases.</td><td>Brian Roberts (card eligibility)</td></tr>
-        <tr><td><strong>AP Workflow</strong></td><td>Invoice submission and approval.</td><td>Brian Roberts</td></tr>
+        <tr><td><strong>Navan</strong></td><td>Travel booking for business travel. All travel must be paid with Ramp card.</td><td>Self-serve + Navan support</td></tr>
+        <tr><td><strong>Ramp</strong></td><td>Corporate card for eligible purchases. Expense management platform.</td><td>Allison Clark</td></tr>
         <tr><td><strong>Lumos (Slack)</strong></td><td>Submit tools access requests for any new software or system access.</td><td>Self-serve in Slack</td></tr>
       </tbody>
     </table>
@@ -1468,16 +1589,6 @@
         </div>
       </div>
       <p>Your primary source of truth for account data, pipeline, deal status, and the FY26 ABX account list. Use the <strong>Account Classification: FY26 ABX</strong> filter to pull your accounts. Also used to log all campaign engagement and track opportunity influence. <em>Contact: Daniel Cuadra / Omar Hani</em></p>
-    </div>
-    <div class="tool-card">
-      <div class="tool-header">
-        <div class="tool-icon">✅</div>
-        <div>
-          <h3>Asana</h3>
-          <div class="tool-role">Program & Task Management</div>
-        </div>
-      </div>
-      <p>Where all ABX plays, campaigns, and tasks live. Every program should have an Asana task or project. Use it to track milestones, assign owners, and manage cross-functional requests. <strong>If it's not in Asana, it doesn't exist.</strong> <em>Workspace owner: Shab Jahan</em></p>
     </div>
     <div class="tool-card">
       <div class="tool-header">
@@ -1596,12 +1707,12 @@
       <p>Track your ABX program spend against budget. All planned and actual spend should be logged here. Contact Brian Roberts for setup and training.</p>
     </div>
     <div class="tool-card">
-      <div class="tool-header"><div class="tool-icon">✈️</div><div><h3>Navan</h3><div class="tool-role">Travel & Expense</div></div></div>
-      <p>Book all business travel and submit expense reports through Navan. Company travel policy applies. Self-serve with Navan support.</p>
+      <div class="tool-header"><div class="tool-icon">✈️</div><div><h3>Navan</h3><div class="tool-role">Travel</div></div></div>
+      <p>Book all business travel  through Navan. Company travel policy applies. Self-serve with Navan support.</p>
     </div>
     <div class="tool-card">
       <div class="tool-header"><div class="tool-icon">💳</div><div><h3>Ramp</h3><div class="tool-role">Corporate Card</div></div></div>
-      <p>Corporate card for eligible purchases. Check with Brian Roberts on card eligibility and category restrictions.</p>
+      <p>Corporate card for eligible purchases. Check with Allison Clark on card eligibility and category restrictions.</p>
     </div>
   </div>
 </div>
@@ -1702,7 +1813,11 @@
 
   <div class="faq-item">
     <div class="faq-q" onclick="toggleFaq(this)">How do I get an account added to the ABX target list? <span>▼</span></div>
-    <div class="faq-a">Speak to Shab or bring it up in the next Sales Sync. The account team (AE + ABX) reviews the fit criteria: pipeline potential, strategic alignment, and resource capacity. Accounts are formally added via the Account Classification field in Salesforce. The list is reviewed and updated quarterly as part of the planning cycle.</div>
+    <div class="faq-a">
+      <p>Speak to Shab or bring it up in the next Sales Sync. The account team (AE + ABX) reviews the fit criteria: pipeline potential, strategic alignment, and resource capacity. Accounts are formally added via the Account Classification field in Salesforce. The list is reviewed and updated yearly as part of the planning cycle.</p>
+      <p>&nbsp;</p>
+      <p>Do not tell a sales partner that a requested change has been approved, unless it is confirmed by Shab.</p>
+    </div>
   </div>
 
   <div class="faq-item">
@@ -1712,12 +1827,12 @@
 
   <div class="faq-item">
     <div class="faq-q" onclick="toggleFaq(this)">How long does it take to build and launch an ABX play? <span>▼</span></div>
-    <div class="faq-a">Depends on the play type. Account brief: 24–48 hours. Email sequence: 1–2 weeks (including Marketo build). Event: 6–8 weeks minimum. Influ2 ad campaign: 1–2 weeks to set up. Always create the Asana task first so we can track scope, ownership, and timeline.</div>
+    <div class="faq-a">Depends on the play type. Account brief: 24–48 hours. Email sequence: 1–2 weeks (including Marketo build). Event: 6–8 weeks minimum. Influ2 ad campaign: 1–2 weeks to set up.</div>
   </div>
 
   <div class="faq-item">
     <div class="faq-q" onclick="toggleFaq(this)">What's our relationship with Field Marketing vs. ABX? <span>▼</span></div>
-    <div class="faq-a">Field Marketing runs regional and event programs broadly. ABX provides the account targeting precision for those programs — which accounts to invite, what messaging to use, how to follow up. We collaborate on every event that involves ABX accounts. ABX doesn't "own" events, but we have a strong seat at the table for guest list, messaging, and follow-up strategy.</div>
+    <div class="faq-a">Field Marketing runs regional and event programs broadly. ABX provides the account targeting precision for those programs — which accounts to invite, what messaging to use, how to follow up. We collaborate on every event that involves ABX accounts. ABX  owns ABX Only events which are typically 3rd party hosted with vendors such as Connex and Ortus Club, but we also run 1:1 and smaller group events.</div>
   </div>
 
   <div class="faq-item">
